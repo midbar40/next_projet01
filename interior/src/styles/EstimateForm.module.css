@@ -1,0 +1,27 @@
+.estimate {
+    height: 1800px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .estimate_container {
+    width: 80%;
+    height: 1800px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  .form_container {
+    width: 60%;
+  }
+  .form_container form label{
+    font-weight: 600;
+  }
+  .form_container form div{
+    padding: 15px 0;
+  }
+  

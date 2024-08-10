@@ -1,0 +1,17 @@
+
+.request{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 60px;
+  }
+  .request button{
+    width: 60%;
+    height: 60px;
+    border-radius: 6px;
+    /* border: 1px solid #333; */
+    background-color: rgb(99, 107, 248);
+    color: #fff;
+    font-weight: 600;
+  }

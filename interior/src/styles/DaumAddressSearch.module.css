@@ -1,0 +1,23 @@
+.button{
+    padding: .5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #e5e5e5;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.juso{
+    width: 85%;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0 1rem;
+    margin-bottom: .5rem;
+}
+.detailJuso{
+    width: 85%;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0 1rem;
+}

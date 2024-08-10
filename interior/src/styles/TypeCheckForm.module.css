@@ -1,0 +1,28 @@
+.type {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+  }
+  .type div{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+  }
+  .type .type_selectBox{
+    width: 150px; 
+    height: 60px; 
+    border: .5px solid #333;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .type input{
+    width: 20px;
+    height: 20px;
+  }
+  .type_content{
+    display: flex;
+    flex-wrap: wrap;
+  }

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styles from "../styles/page.module.css";
 import Link from 'next/link';
-import Carousel from "@/components/Carousel ";
+import {Carousel, EstimateForm, ConsultProcess} from "@/components/index";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function Home() {
 
@@ -28,7 +29,7 @@ export default function Home() {
       <main className={styles.mainTag}>
         <section className={styles.section_first}>
           <div className={styles.background_img}>
-            <img src="/images/main_section1.jpg" />
+            <img src="/images/main_section5.jpg" />
             <div className={styles.mainText}>
               <p>집에 가고 싶다...</p>
               <p>모두가 집돌이가 되는 그 곳</p>
@@ -41,35 +42,10 @@ export default function Home() {
           <Carousel />
         </section>
         <section className={styles.process}>
-          <div className={styles.prodcess_cards}>
-            <div className={styles.card}>문의하기</div>
-            <div className={styles.card}>1:1상담</div>
-            <div className={styles.card}>현장실측</div>
-            <div className={styles.card}>컨셉확인</div>
-            <div className={styles.card}>견적확인</div>
-            <div className={styles.card}>계약진행</div>
-            <div className={styles.card}>공사진행</div>
-            <div className={styles.card}>사후점검</div>
-          </div>
+          <ConsultProcess />
         </section>
         <section className={styles.estimate}>
-          <div className={styles.estimate_container}>
-            <div></div>
-            <div>
-              <form action="">
-                <div>
-                  <label htmlFor="region">지역</label>
-                  <select name="region" id="region">
-                    <option value="yuseounggu">유성구</option>
-                    <option value="seogu">서구</option>
-                    <option value="donggu">동구</option>
-                    <option value="joonggu">중구</option>
-                    <option value="daeduckgu">대덕구</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-          </div>
+        <EstimateForm />
         </section>
       </main>
       <footer className={styles.footerTag}>
