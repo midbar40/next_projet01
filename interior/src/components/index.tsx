@@ -1,4 +1,7 @@
-export {default as TypeCheckForm} from './TypeCheckForm';
+export {default as Header } from './Header';
+export {default as MainSlide } from './MainSlide';
+export {default as Footer } from './Footer';
+export {default as TypeCheckForm} from './forms/TypeCheckForm';
 export {default as Carousel } from './Carousel ';
 export {default as Py } from './forms/Py';
 export {default as Region } from './forms/Region';
@@ -9,4 +12,4 @@ export {default as Agree } from './forms/Agree';
 export {default as Qna } from './forms/Qna';
 export {default as Request } from './forms/Request';
 export {default as EstimateForm } from './forms/EstimateForm';
-export {default as ConsultProcess } from './ConsultProcess';
+export {default as ConsultProcess } from './forms/ConsultProcess';

@@ -9,69 +9,6 @@
   position: relative;
 }
 
-.header {
-  width: 100%;
-  height: 10rem;
-  background-color: rgba(254, 254, 254);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-}
-
-.nav {
-  padding-right: 8rem;
-}
-
-.nav ul {
-  display: flex;
-  gap: 5rem;
-}
-
-.nav li {
-  width: 100px;
-  height: 100px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: 'GmarketSansMedium';
-  color: #9f9f9f;
-  text-align: center;
-  line-height: 100px;
-}
-
-.nav li:hover {
-  background-color: rgb(235, 245, 181);
-}
-
-.brandName {
-  position: absolute;
-  left: 5%;
-  color: rgb(0, 0, 0) !important;
-  font-size: 1.6rem !important;
-}
-
-.brandName:hover {
-  color: #9f9f9f !important;
-  background-color: #fff !important;
-}
-
-.brandName_div {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.brandName_div img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 15px;
-}
-
 .mainTag {
   width: 100%;
   min-height: calc(100vh - 10rem);
@@ -83,64 +20,18 @@
   /* height: 500px; */
 }
 
-.background_img {
-  width: 100%;
-  height: 800px;
-  /* 원하는 높이 설정 */
-  overflow: hidden;
-  /* 부모 요소에서 이미지가 넘치는 부분을 숨깁니다 */
-  position: relative;
-}
-
-.background_img::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* 검정색 불투명 배경 */
-}
-
-.background_img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.mainText {
-  width: 800px;
-  right: 5%;
-  top: 20%;
-  position: absolute;
-  color: #fff;
-  z-index: 99;
-  font-size: 5rem;
-  font-family: 'Freesentation-9Black';
-  opacity: 0;
-  animation: fadeIn 3s forwards;
-}
-
-.mainText p:last-child {
-  margin-top: 3rem;
-  font-size: 2.5rem;
-  color: bisque;
-}
-
 .carousel {
   background-color: antiquewhite;
   height: 700px;
   display: flex;
   overflow: hidden;
 }
+
 .process {
   height: 600px;
   background-color: rgb(212, 212, 212);
 }
+
 .footerTag {
   width: 100%;
   position: sticky;
@@ -152,33 +43,6 @@
   padding-left: 10rem;
 }
 
-.footerTag span {
-  padding-right: 10px;
-  margin-right: 10px;
-  border-right: 1px solid #c7c7c7;
-  color: #c7c7c7;
-  font-size: 1.2rem;
-}
-
-.footerTag .lastSpan {
-  border: none;
-}
-
-.footerTag p {
-  color: #c7c7c7;
-  font-size: 1.2rem;
-  margin-top: 5px;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
 
 
 @font-face {

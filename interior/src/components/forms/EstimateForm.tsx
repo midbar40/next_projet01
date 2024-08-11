@@ -24,4 +24,4 @@ const EstimateForm = () => {
     )
 }
 
-export default EstimateForm
+export default EstimateForm;
