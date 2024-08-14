@@ -1,27 +1,29 @@
-.estimate {
-    height: 1800px;
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .estimate_container {
-    width: 100%;
-    height: 1800px;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 1.5rem;
-  }
-  .form_container {
-    width: 50%;
-  }
-  .form_container form label{
-    font-weight: 600;
-  }
-  .form_container form div{
-    padding: 15px 0;
-  }
-  
+.estimate_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 4rem;
+  margin-bottom: 10rem;
+  padding-left: 7rem;
+}
+
+.form_container {
+  width: 50%;
+  font-family: 'GmarketSansMedium';
+}
+.form_container h3 {
+  font-size: 3rem;
+  font-family: 'Freesentation-9Black';
+  padding-bottom: 2rem;
+}
+
+.form_container form label {
+  font-weight: 600;
+}
+
+.form_container form div {
+  padding: 15px 0;
+}

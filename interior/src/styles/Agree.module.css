@@ -1,15 +1,19 @@
-.agree{
+.agree {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-  }
-  .agree input{
+    margin-bottom: 1.5rem;
+
+}
+
+.agree input {
     width: 25px;
     height: 25px;
     margin-right: 1rem;
-  }
-  .agree p{
+    margin-bottom: 5px;
+}
+
+.agree p {
     font-size: 1.3rem;
     color: #a1a1a1;
     margin-left: 1rem;
-  }
+}

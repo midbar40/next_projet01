@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "src": "/images/main_section1.jpg",
+    "alt": "카드1번이미지",
+    "description": "이미지에 대한 설명1"
+  },
+  {
+    "id": 2,
+    "src": "/images/main_section2.jpg",
+    "alt": "카드2번이미지",
+    "description": "이미지에 대한 설명2"
+  },
+  {
+    "id": 3,
+    "src": "/images/main_section3.jpg",
+    "alt": "카드3번이미지",
+    "description": "이미지에 대한 설명3"
+  },
+  {
+    "id": 4,
+    "src": "/images/main_section4.jpg",
+    "alt": "카드4번이미지",
+    "description": "이미지에 대한 설명4"
+  },
+  {
+    "id": 5,
+    "src": "/images/main_section5.jpg",
+    "alt": "카드5번이미지",
+    "description": "이미지에 대한 설명5 "
+  },
+  {
+    "id": 6,
+    "src": "/images/main_section1.jpg",
+    "alt": "카드1번이미지",
+    "description": "이미지에 대한 설명1"
+  }
+]

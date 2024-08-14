@@ -9,6 +9,7 @@
     align-items: center;
     gap: 25px;
     width: 100%;
+    cursor: pointer;
   }
   .py_selectBox{
     width: 150px; 

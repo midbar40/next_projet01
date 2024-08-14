@@ -10,7 +10,7 @@ const Header: React.FC = () => {
           <li className={styles.brandName}>
             <div className={styles.brandName_div}>
               <img src="/images/brandLogo.png" />
-              <h1 >집돌이즘</h1>
+              <h1>집돌이즘</h1>
             </div>
           </li>
         </Link>

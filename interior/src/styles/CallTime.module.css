@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     gap: 25px;
+    cursor: pointer;
   }
   .time_selectBox{
     width: 200px;

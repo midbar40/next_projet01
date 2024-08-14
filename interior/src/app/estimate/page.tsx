@@ -1,7 +1,19 @@
-
+import { Header, EstimateForm } from "@/components"
 
 export default function page() {
     return(
-        <div>견적문의</div>
+        <>
+            <Header />
+            <div style={{
+                    marginTop: '10rem',
+                    backgroundColor: 'rgb(255, 255, 255)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+            }}>
+                <EstimateForm />
+            </div>
+
+        </>
     )
 }

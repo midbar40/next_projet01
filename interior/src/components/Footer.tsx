@@ -1,7 +1,7 @@
 import styles from '../styles/Footer.module.css';
 const Footer: React.FC = () => {
   return (
-    <div>
+    <div className={styles.footerTag}>
       {/* '집도리즘' 집돌'IS 집돌IS 도 좋은듯 */}
       <span>집돌이즘</span>
       <span>집돌이</span>

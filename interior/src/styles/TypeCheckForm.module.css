@@ -1,13 +1,14 @@
 .type {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 89%;
   }
   .type div{
     display: flex;
     align-items: center;
     gap: 25px;
     width: 100%;
+    cursor: pointer;
   }
   .type .type_selectBox{
     width: 150px; 

@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  /* padding: 3rem; */
   min-height: 100vh;
   /* min-width: 100vw; */
   position: relative;
@@ -17,19 +16,36 @@
 .section_first {
   margin-top: 10rem;
   width: 100%;
-  /* height: 500px; */
+}
+.strongPoint{
+  width: 100%;
+  padding: 5rem 0;
+  margin-bottom: 10rem;
+  background-color: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gridCard {
+  width: 100%;
+  display: flex; /* Optional: To center the grid within its container */
+  flex-direction: column;
+  justify-content: center; /* Center the grid horizontally */
+  align-items: center;
+  /* margin-top: 4rem ; */
+  margin-bottom: 6rem;
 }
 
-.carousel {
-  background-color: antiquewhite;
-  height: 700px;
+.estimate {
+  background-color: rgb(255, 255, 255);
   display: flex;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .process {
-  height: 600px;
-  background-color: rgb(212, 212, 212);
+  padding: 10rem 0;
+  background-color: #efefef;
 }
 
 .footerTag {
@@ -41,20 +57,4 @@
   display: flex;
   align-items: center;
   padding-left: 10rem;
-}
-
-
-
-@font-face {
-  font-family: 'Freesentation-9Black';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
 }
