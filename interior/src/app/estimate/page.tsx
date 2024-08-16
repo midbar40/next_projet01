@@ -1,4 +1,4 @@
-import { Header, EstimateForm } from "@/components"
+import { Header, Footer, EstimateForm } from "@/components"
 
 export default function page() {
     return(
@@ -13,7 +13,7 @@ export default function page() {
             }}>
                 <EstimateForm />
             </div>
-
+            <Footer />
         </>
     )
 }

@@ -27,7 +27,7 @@ export default function Home() {
           <EstimateForm />
         </section>
       </main>
-      <footer className={styles.footerTag}>
+      <footer className={styles.footerSection}>
         <Footer />
       </footer>
     </div>

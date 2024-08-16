@@ -14,6 +14,8 @@ const EstimateForm = () => {
         e.preventDefault()
         console.log('state 제출',state)
         // 여기에 서버로 state를 fetch해서 서버에 저장시켜야한다
+        // 카톡 연동해서 전송, 알림 alert
+        // 페이지 새로고침
     }
     return (
         <div className={styles.estimate_container}>

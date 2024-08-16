@@ -1,3 +1,4 @@
+import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import styles from '../../styles/ConsultProcess.module.css'
 const process = [
@@ -13,15 +14,12 @@ const ConsultProcess = () => {
     return (
         <div className={styles.process_cards}>
             {process.map((content, index) => (
-                <>
-                    <div
-                        key={content.id}
-                        className={styles.card}
-                    >
+                <React.Fragment key={content.id}>
+                    <div className={styles.card}>
                         {content.value}
                     </div>
                     {index < process.length - 1 && <ArrowForwardIosIcon />}
-                </>
+                </React.Fragment>
             ))}
         </div>
     )
