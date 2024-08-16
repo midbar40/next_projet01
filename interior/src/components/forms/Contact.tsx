@@ -1,7 +1,7 @@
 'use client'
 import React from "react"
-import styles from '../../styles/Contact.module.css'
-import { State } from '../forms/EstimateFormReducer'
+import styles from '@/styles/Contact.module.css'
+import { State } from '@/components/forms/EstimateFormReducer'
 
 interface ContactProps {
     onChange: (type: keyof State, value: string | boolean) => void;

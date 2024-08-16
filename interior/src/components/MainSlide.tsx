@@ -1,4 +1,4 @@
-import styles from '../styles/MainSlide.module.css';
+import styles from '@/styles/MainSlide.module.css';
 const MainSlide: React.FC = () => {
     return (
         <div className={styles.background_img}>

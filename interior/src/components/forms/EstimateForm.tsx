@@ -1,7 +1,7 @@
 'use client'
 import { TypeCheckForm, Py, Region, Schedule, Contact, CallTime, Qna, Agree, Request } from "@/components/index";
-import styles from '../../styles/EstimateForm.module.css'
-import { reducer, initialState, Action, State } from './EstimateFormReducer'
+import styles from '@/styles/EstimateForm.module.css'
+import { reducer, initialState,  State } from '@/components/forms/EstimateFormReducer'
 import { useReducer } from "react";
 
 const EstimateForm = () => {

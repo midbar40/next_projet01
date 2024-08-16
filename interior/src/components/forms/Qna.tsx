@@ -1,7 +1,7 @@
 'use client'
 import React from "react"
-import styles from '../../styles/Qna.module.css'
-import { State } from '../forms/EstimateFormReducer'
+import styles from '@/styles/Qna.module.css'
+import { State } from '@/components/forms/EstimateFormReducer'
 
 interface QnaProps {
     onChange: (type: keyof State, value: string | boolean) => void;

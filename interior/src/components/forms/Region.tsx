@@ -1,7 +1,7 @@
 'use client'
 import React from "react"
-import DaumAddressSearch from '../../services/DaumAddressSearch'
-import { State } from './EstimateFormReducer'
+import DaumAddressSearch from '@/services/DaumAddressSearch'
+import { State } from '@/components/forms/EstimateFormReducer'
 
 
 interface RegionProps {

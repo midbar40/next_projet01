@@ -1,4 +1,4 @@
-import styles from '../styles/StrongPoint.module.css';
+import styles from '@/styles/StrongPoint.module.css';
 const StrongPoint: React.FC = () => {
     return (
         <div className={styles.container}>

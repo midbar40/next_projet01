@@ -1,4 +1,4 @@
-import styles from '../styles/Footer.module.css';
+import styles from '@/styles/Footer.module.css';
 const Footer: React.FC = () => {
   return (
     <div className={styles.footerTag}>

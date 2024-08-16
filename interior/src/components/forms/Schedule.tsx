@@ -1,7 +1,7 @@
 'use client'
 import React from "react"
-import styles from '../../styles/Schedule.module.css'
-import { State } from './EstimateFormReducer'
+import styles from '@/styles/Schedule.module.css'
+import { State } from '@/components/forms/EstimateFormReducer'
 
 
 interface ScheduleProps {

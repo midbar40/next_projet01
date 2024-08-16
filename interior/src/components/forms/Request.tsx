@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import styles from '../../styles/Request.module.css'
+import styles from '@/styles/Request.module.css'
 
 const Request: React.FC = () => {
   return (

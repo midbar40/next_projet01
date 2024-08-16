@@ -1,8 +1,8 @@
 import Image from "next/image";
-import styles from "../styles/page.module.css";
+import styles from "@/styles/page.module.css";
 import { Header, Footer, MainSlide, GridCard, EstimateForm, ConsultProcess, StrongPoint } from "@/components/index";
 import { ReadMoreBtn } from '@/components/ReadMoreBtn'
-import images from '../data/mainImageData.json'
+import images from '@/data/mainImageData.json'
 import Link from 'next/link';
 
 export default function Home() {

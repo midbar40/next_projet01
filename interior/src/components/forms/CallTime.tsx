@@ -1,8 +1,8 @@
 
 'use client'
 import React, { useState } from "react"
-import styles from '../../styles/CallTime.module.css'
-import { State } from './EstimateFormReducer'
+import styles from '@/styles/CallTime.module.css'
+import { State } from '@/components/forms/EstimateFormReducer'
 
 const time = [
   { id: 1, value: '오전' },

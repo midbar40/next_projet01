@@ -1,6 +1,6 @@
 import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import styles from '../../styles/ConsultProcess.module.css'
+import styles from '@/styles/ConsultProcess.module.css'
 const process = [
     { id: 1, value: '상담하기' },
     { id: 2, value: '현장실측' },

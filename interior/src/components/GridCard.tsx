@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link'
-import styles from '../styles/GridCard.module.css';
+import styles from '@/styles/GridCard.module.css';
 
 // 각 카드의 데이터를 나타내는 인터페이스 정의
 interface CardData {
