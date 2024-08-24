@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styles from '@/styles/Header.module.css';
+import Image from 'next/image'
+
 const Header: React.FC = () => {
  
   return (
@@ -9,7 +11,7 @@ const Header: React.FC = () => {
         <Link href='/'>
           <li className={styles.brandName}>
             <div className={styles.brandName_div}>
-              <img src="/images/brandLogo.png" />
+              <Image src="/images/brandLogo.png" alt='brandLogo'/>
               <h1>집돌이즘</h1>
             </div>
           </li>

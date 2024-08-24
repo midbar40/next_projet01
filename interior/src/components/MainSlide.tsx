@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useRef  } from 'react';
 import styles from '@/styles/MainSlide.module.css';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import Image from 'next/image'
 
 interface SlideProps {
     src: string;
@@ -33,7 +34,7 @@ const cloneSlides = [slides[slides.length - 1], ...slides, slides[0]];
 export const Slide: React.FC<SlideProps> = ({ src, text }) => {
     return (
         <div className={styles.slider}>
-            <img src={src} alt="slide" />
+            <Image src={src} alt="slide" />
             <div className={styles.mainText}>
                 {text.map((item, index) => (<p key={index}>{item}</p>))}
             </div>
@@ -46,31 +47,48 @@ const MainSlide: React.FC = () => {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [showSliderIcon, setshowSliderIcon] = useState(false);
     const [autoPlayInterval, setAutoPlayInterval] = useState<NodeJS.Timeout | null>(null);
+    const autoPlayIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-
-
-    // 슬라이드 자동 재생
-    useEffect(() => {
-        startAutoPlay();
-        return () => stopAutoPlay(); // 컴포넌트 언마운트 시 자동 재생 정지
-    }, []);
-
-    const startAutoPlay = () => {
-        if (autoPlayInterval) return; // 이미 인터벌이 설정된 경우 중복 실행 방지
-        const interval = setInterval(() => {
+    const startAutoPlay = useCallback(() => {
+        if (autoPlayIntervalRef.current) return; // 이미 인터벌이 설정된 경우 중복 실행 방지
+        autoPlayIntervalRef.current = setInterval(() => {
             handleSlideNext();
         }, 5000); // 5초 간격으로 슬라이드 전환
-        setAutoPlayInterval(interval);
         console.log("Start AutoPlay");
-    };
+    }, []);
 
-    const stopAutoPlay = () => {
-        if (autoPlayInterval) {
-            clearInterval(autoPlayInterval);
-            setAutoPlayInterval(null);
+    const stopAutoPlay = useCallback(() => {
+        if (autoPlayIntervalRef.current) {
+            clearInterval(autoPlayIntervalRef.current);
+            autoPlayIntervalRef.current = null;
             console.log("Stop AutoPlay");
         }
-    };
+    }, []);
+    
+    // 슬라이드 자동 재생
+    useEffect(() => {
+        const handleTapActive = () => {
+            if (document.visibilityState === 'visible') {
+                startAutoPlay(); // 탭이 활성화되면 자동 재생 시작
+            } else {
+                stopAutoPlay(); // 탭이 비활성화되면 자동 재생 정지
+            }
+        };
+    
+        // 처음 마운트될 때 자동 재생 시작
+        startAutoPlay();
+    
+        // 탭의 가시성 변화 감지 이벤트 등록
+        document.addEventListener('visibilitychange', handleTapActive);
+    
+        // 컴포넌트 언마운트 시 이벤트 제거 및 자동 재생 중지
+        return () => {
+            stopAutoPlay();
+            document.removeEventListener('visibilitychange', handleTapActive);
+        };
+    }, [startAutoPlay, stopAutoPlay]); // startAutoPlay와 stopAutoPlay를 의존성 배열에 추가
+
+  
 
     const handleSlideNext = () => {
         setIsTransitioning(true);
@@ -96,7 +114,7 @@ const MainSlide: React.FC = () => {
                 }, 1000); // 트랜지션 시간이 지나고 나서
                 return prevSlide - 1;
             }
-           
+
             return prevSlide - 1;
         });
     };

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link'
 import styles from '@/styles/GridCard.module.css';
+import Image from 'next/image'
 
 // 각 카드의 데이터를 나타내는 인터페이스 정의
 interface CardData {
@@ -10,7 +11,7 @@ interface CardData {
   src: string;
   alt: string;
   description: string;
-  title : string;
+  title: string;
 }
 
 // 이 데이터를 props로 전달할 때 사용할 인터페이스 정의
@@ -40,7 +41,7 @@ const GridCard: React.FC<Props> = ({ cards }) => {
                 onMouseOver={() => showImageHeadline(item.id as number)}
                 onMouseOut={hideImageHeadline}
               >
-                <img
+                <Image
                   src={item.src}
                   alt={item.alt}
                 />
