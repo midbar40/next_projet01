@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useCallback, useRef  } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import styles from '@/styles/MainSlide.module.css';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
@@ -64,7 +64,7 @@ const MainSlide: React.FC = () => {
             console.log("Stop AutoPlay");
         }
     }, []);
-    
+
     // 슬라이드 자동 재생
     useEffect(() => {
         const handleTapActive = () => {
@@ -74,13 +74,13 @@ const MainSlide: React.FC = () => {
                 stopAutoPlay(); // 탭이 비활성화되면 자동 재생 정지
             }
         };
-    
+
         // 처음 마운트될 때 자동 재생 시작
         startAutoPlay();
-    
+
         // 탭의 가시성 변화 감지 이벤트 등록
         document.addEventListener('visibilitychange', handleTapActive);
-    
+
         // 컴포넌트 언마운트 시 이벤트 제거 및 자동 재생 중지
         return () => {
             stopAutoPlay();
@@ -88,7 +88,7 @@ const MainSlide: React.FC = () => {
         };
     }, [startAutoPlay, stopAutoPlay]); // startAutoPlay와 stopAutoPlay를 의존성 배열에 추가
 
-  
+
 
     const handleSlideNext = () => {
         setIsTransitioning(true);
@@ -155,6 +155,16 @@ const MainSlide: React.FC = () => {
             <div className={styles.sliderRightBtn}>
                 {showSliderIcon && <ChevronRightRoundedIcon className={styles.arrowIcon} onClick={handleSlideNext} />}
             </div>
+            <div className={styles.dotBox}>
+            {slides.map((_, index) => (
+                    <div
+                        className={`${styles.dot} ${currentSlide === index + 1 ? styles.dot_active : ''}`}
+                        key={index}
+                        onClick={() => setCurrentSlide(index + 1)}
+                    ></div>
+                ))}
+            </div>
+
         </div>
     );
 };
