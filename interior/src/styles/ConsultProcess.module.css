@@ -1,19 +1,35 @@
-
-
-.process_cards {
-    width: 100%;
+.process_frame {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
 }
-.card {
-    width: 11.25rem;
-    border: 1.5px solid #333;
-    color: #333;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 11.25rem;
+
+.process_cards {
+    width: 70%;
+    flex-wrap: wrap;
+    display: flex;
+    margin: 0 auto;
+    gap: 30px;
+    font-family: 'GmarketSansMedium';
+}
+
+.cardId {
+    width: 16.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cardId span{
     font-size: 1.5rem;
-    font-weight: 600;
-  }
+    /* font-weight: 600; */
+}
+
+.card {
+    border-top: 1px solid #333;
+    padding: .5rem 1rem;
+    color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+    /* font-weight: 600; */
+}
