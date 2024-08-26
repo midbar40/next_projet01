@@ -11,7 +11,7 @@ const Qna: React.FC<QnaProps> = ({ onChange }) => {
     const handleTextareaValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const type = e.target.name as keyof State;
         const value = e.target.value;
-        onChange(type, value)
+        onChange(type, value.trim())
     }
     return (
         <div className={styles.qna}>

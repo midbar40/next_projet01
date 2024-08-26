@@ -1,6 +1,7 @@
 'use client'
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
+import AdminLogin from "@/app/admin/AdminLogin";
 import styles from '@/app/admin/page.module.css'
 
 // User 정보 타입 정의
@@ -15,7 +16,8 @@ interface User {
     created_at: string;
 }
 export default function AdminDashboard() {
-    const [userInfo, setUserInfo] = useState<User[]>([]); 
+    const [authentication, setAuthentication] = useState(false)
+    const [userInfo, setUserInfo] = useState<User[]>([]);
     const getUserData = async () => {
         try {
             const response = await fetch('/api/db');
@@ -33,6 +35,10 @@ export default function AdminDashboard() {
     useEffect(() => {
         getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
     }, []); // 빈 배열로 의존성 설정
+
+    if (!authentication) return (
+        <AdminLogin />
+    )
 
     return (
         <div className={styles.main}>
@@ -55,19 +61,19 @@ export default function AdminDashboard() {
                         </tr>
                     </thead>
                     <tbody>
-                    {userInfo.map((item, index) => (
-                        <tr key={item.contact}>
-                            <td>{index + 1}</td>
-                            <td>{item.contact}</td>
-                            <td>{item.address}</td>
-                            <td>{item.type}</td>
-                            <td>{item.py}</td>
-                            <td>{item.schedule}</td>
-                            <td>{item.callTime}</td>
-                            <td>{item.qna}</td>
-                            <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
-                        </tr>
-                    ))}
+                        {userInfo.map((item, index) => (
+                            <tr key={item.contact}>
+                                <td>{index + 1}</td>
+                                <td>{item.contact}</td>
+                                <td>{item.address}</td>
+                                <td>{item.type}</td>
+                                <td>{item.py}</td>
+                                <td>{item.schedule}</td>
+                                <td>{item.callTime}</td>
+                                <td>{item.qna}</td>
+                                <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

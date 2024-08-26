@@ -11,7 +11,7 @@ const Contact: React.FC<ContactProps> = ({ onChange }) => {
     const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const type = e.target.name as keyof State
         const value = e.target.value
-        onChange(type, value)
+        onChange(type, value.trim())
     }
     return (
         <div className={styles.contact}>
