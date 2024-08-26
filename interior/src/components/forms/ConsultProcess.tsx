@@ -14,9 +14,8 @@ const process = [
 const ConsultProcess = () => {
     return (
         <div className={styles.process_frame}>
-
+            <div className={styles.processHeadLine}><h2>작업절차</h2></div>
             <div className={styles.process_cards}>
-
                 {process.map((content, index) => (
                     <React.Fragment key={content.id}>
                         <div className={styles.cardId}>

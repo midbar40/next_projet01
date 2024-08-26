@@ -38,7 +38,6 @@
 }
 
 .mainText {
-  width: 800px;
   right: 5%;
   top: 20%;
   position: absolute;
@@ -55,7 +54,8 @@
   font-size: 2.5rem;
   color: bisque;
 }
-.dotBox{
+
+.dotBox {
   display: flex;
   gap: 15px;
   position: absolute;
@@ -63,44 +63,51 @@
   bottom: 10%;
   right: 48%;
 }
-.dot{
+
+.dot {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: #ffffff98;
   cursor: pointer;
 }
-.dot_active{
+
+.dot_active {
   background-color: #ffffff;
 }
 
-.sliderLeftBtn{
+.sliderLeftBtn {
   position: absolute;
   top: 40%;
   left: 2%;
-  color: rgba(255,255,255,.5);
+  color: rgba(255, 255, 255, .5);
 }
-.sliderRightBtn{
+
+.sliderRightBtn {
   position: absolute;
   top: 40%;
   right: 2%;
-  color: rgba(255,255,255,.5);
+  color: rgba(255, 255, 255, .5);
 }
-.sliderLeftBtn svg{
+
+.sliderLeftBtn svg {
   font-size: 6rem;
 }
-.sliderRightBtn svg{
+
+.sliderRightBtn svg {
   font-size: 6rem;
 }
-.arrowIcon{
+
+.arrowIcon {
   /* font-size: 6rem; */
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
 }
 
-.arrowIcon:active{
+.arrowIcon:active {
   color: rgba(255, 255, 255, 0.858);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes fadeIn {

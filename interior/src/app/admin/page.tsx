@@ -33,8 +33,8 @@ export default function AdminDashboard() {
     };
 
     useEffect(() => {
-        getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
-    }, []); // 빈 배열로 의존성 설정
+       if(authentication) getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
+    }, [authentication]); // 빈 배열로 의존성 설정
 
     if (!authentication) return (
         <AdminLogin />

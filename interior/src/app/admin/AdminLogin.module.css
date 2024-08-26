@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5rem;
 }
 
 .title {
@@ -30,7 +31,7 @@
     width: 70px;
 }
 .inputDiv input{
-    padding: 0 0.2rem;
+    padding: 0.1rem 0.2rem;
     border: 1px solid #333;
 }
 .btn{

@@ -6,6 +6,9 @@
     cursor: pointer;
     margin-bottom: 1rem;
 }
+.button:active{
+    background-color: #e5e5e586;
+}
 .juso{
     width: 85%;
     height: 50px;
