@@ -10,11 +10,31 @@ const EstimateForm = () => {
     const handelInputValueChange = (type : keyof State, value: string | boolean) => {
         dispatch({type, value})
     }
+    const sendEstimateForm = async(state : {}) => {
+        console.log('sendEstimateForm', state)
+        try {
+            const response = await fetch('/api/db',{
+                method : 'POST',
+                headers : {
+                    'Content-Type' : "application/json"
+                },
+                body : JSON.stringify({state})
+            })
+            const result = await response.json()
+        console.log('sendEstimateForm result', result)
+
+            
+        } catch (error) {
+            console.error("서버전송Error", error)
+        }
+    }
     const handleSubmit = (e:React.FormEvent) => {
         e.preventDefault()
         console.log('state 제출',state)
         // 여기에 서버로 state를 fetch해서 서버에 저장시켜야한다
-        // 카톡 연동해서 전송, 알림 alert
+        sendEstimateForm(state)
+        // 유저에게 메세지 전송
+        // 관리자에게 nodemailer로 이메일전송
         // 페이지 새로고침
     }
     return (
