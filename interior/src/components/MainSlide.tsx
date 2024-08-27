@@ -54,14 +54,12 @@ const MainSlide: React.FC = () => {
         autoPlayIntervalRef.current = setInterval(() => {
             handleSlideNext();
         }, 5000); // 5초 간격으로 슬라이드 전환
-        console.log("Start AutoPlay");
     }, []);
 
     const stopAutoPlay = useCallback(() => {
         if (autoPlayIntervalRef.current) {
             clearInterval(autoPlayIntervalRef.current);
             autoPlayIntervalRef.current = null;
-            console.log("Stop AutoPlay");
         }
     }, []);
 
@@ -122,14 +120,10 @@ const MainSlide: React.FC = () => {
     const showBtnAndStop = (e: React.MouseEvent<HTMLOrSVGElement>) => {
         stopAutoPlay()
         setshowSliderIcon(true)
-        console.log("Mouse Over: Stop AutoPlay and Show Buttons");
-
     }
     const hideBtnAndPlay = (e: React.MouseEvent<HTMLOrSVGElement>) => {
         startAutoPlay()
         setshowSliderIcon(false)
-        console.log("Mouse Out: Start AutoPlay and Hide Buttons");
-
     }
 
     return (

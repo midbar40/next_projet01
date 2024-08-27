@@ -1,5 +1,5 @@
 
-export function convertUtcTimeToKoreanTime(time:string) {
+export function convertUtcTimeToKoreanTime(time: string) {
     // UTC 시간 문자열
     const utcDateStr = time;
 

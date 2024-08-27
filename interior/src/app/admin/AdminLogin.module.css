@@ -16,25 +16,29 @@
     font-family: 'Freesentation-9Black';
 }
 
-.loginForm{
+.loginForm {
     display: flex;
     flex-direction: column;
 }
-.inputDiv{
+
+.inputDiv {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 1.5rem;
 }
-.inputDiv label{
+
+.inputDiv label {
     display: inline-block;
     width: 70px;
 }
-.inputDiv input{
+
+.inputDiv input {
     padding: 0.1rem 0.2rem;
     border: 1px solid #333;
 }
-.btn{
+
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,6 +47,7 @@
     color: #fff;
     cursor: pointer;
 }
-.btn:active{
+
+.btn:active {
     background-color: #333333d3;
 }

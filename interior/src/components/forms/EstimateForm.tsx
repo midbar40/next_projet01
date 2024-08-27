@@ -37,8 +37,6 @@ const EstimateForm = () => {
     // 폼검증 함수
     const verifyFormValue = (formValue: State) => {
         const regex = /^01[0-9]{1}-?[0-9]{3,4}-?[0-9]{4}$/;
-
-        console.log('formValue', formValue)
         if (
             formValue.juso === '' ||
             formValue.detailJuso === '' ||
@@ -85,6 +83,25 @@ const EstimateForm = () => {
         }
     }
 
+    const sendEmailToAdmin = async (state: {}) => {
+        try {
+            const response = await fetch('/api/nodemailer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({ state })
+            })
+            const result = await response.json()
+            console.log('nodemailer result', result)
+            if (result.success) console.log('메일전송성공')
+            else console.log('메일전송실패')
+        } catch (error) {
+            console.log('nodemailer Error', error)
+        }
+    }
+
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         // 유저에게 메세지 전송
@@ -112,6 +129,7 @@ const EstimateForm = () => {
             // sendSmsToUser(textContent, state.contact)
         }
         // 관리자에게 nodemailer로 이메일전송
+            sendEmailToAdmin(state)
         // 페이지 새로고침
     }
     return (

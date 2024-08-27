@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
         console.log('content', request.textContent)
         console.log('contact', contact)
-        
+
         const message = await client.messages.create({
             body: content,
             from: '+14243561013',
