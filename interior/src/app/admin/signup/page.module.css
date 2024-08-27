@@ -1,0 +1,53 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.title {
+    margin: 3rem 0;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: 'Freesentation-9Black';
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.inputDiv label {
+    display: inline-block;
+    width: 70px;
+}
+
+.inputDiv input {
+    padding: 0.1rem 0.2rem;
+    border: 1px solid #333;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: .3rem 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: #333333d3;
+}

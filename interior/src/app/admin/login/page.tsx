@@ -1,5 +1,7 @@
-import React from "react";
-import styles from '@/app/admin/AdminLogin.module.css'
+'use client'
+
+import Link from 'next/link';
+import styles from '@/app/admin/login/page.module.css'
 
 export default function AdminLogin() {
     const submitAdminInfo = async () => {
@@ -26,6 +28,7 @@ export default function AdminLogin() {
                     </div>
                 </form>
             </div>
+            <Link href='/example'><div><span></span></div></Link>
         </div>
     )
 }
