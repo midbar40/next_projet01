@@ -2,19 +2,14 @@
 
 import { useRef, useState } from 'react';
 import styles from '../styles/DaumAddressSearch.module.css'
-import { State } from '../components/forms/EstimateFormReducer'
+import { useFormDispatch, useForms } from '@/components/forms/FormContext'
 
-
-interface DaumAddressSearchProps {
-    onChange: (type: keyof State, value: string | boolean) => void;
-}
 // React.FC는 전체 컴포넌트를 타입으로 지정할 때 사용하며, export default function 문법과는 함께 사용되지 않습니다.
-export default function DaumAddressSearch({ onChange }: DaumAddressSearchProps) {
+export default function DaumAddressSearch() {
+    const dispatch = useFormDispatch()
+    const state = useForms()
     const addressRef = useRef<HTMLInputElement | null>(null);
     const detailAddressRef = useRef<HTMLInputElement | null>(null);
-    const [address, setAddress] = useState('');
-    const [detailAddress, setDetailAddress] = useState('');
-
 
     const handlePostcode = () => {
         new (window as any).daum.Postcode({
@@ -26,18 +21,13 @@ export default function DaumAddressSearch({ onChange }: DaumAddressSearchProps) 
                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
                     addr = data.jibunAddress;
                 }
-
-                //  주소 정보를 해당 필드에 넣는다.
-
                 // 주소 상태 업데이트
-                setAddress(addr);
-                onChange('juso', addr);
+                dispatch({ type: 'juso', value: addr });
 
                 // 상세주소로 커서 이동
                 if (detailAddressRef.current) {
                     detailAddressRef.current.focus();
                 }
-
 
             }
         }).open();
@@ -47,18 +37,16 @@ export default function DaumAddressSearch({ onChange }: DaumAddressSearchProps) 
         <div>
             <input type="button" onClick={handlePostcode} value="주소 검색" className={styles.button} /><br />
             <input type="text" name='juso' ref={addressRef} placeholder="주소" id="sample6_address" className={styles.juso}
-               value={address}
-               onChange={(e) => {
-                    const value = e.target.value;
-                    setAddress(value);
-                    onChange('juso', value.trim());
-                }} /><br />
-            <input type="text" name='detailJuso' ref={detailAddressRef} placeholder="상세주소" id="sample6_detailAddress" className={styles.detailJuso}
-                value={detailAddress}
+                value={state?.juso || ''}
                 onChange={(e) => {
                     const value = e.target.value;
-                    setDetailAddress(value);
-                    onChange('detailJuso', value.trim());
+                    dispatch({ type: 'juso', value: value});
+                }} /><br />
+            <input type="text" name='detailJuso' ref={detailAddressRef} placeholder="상세주소" id="sample6_detailAddress" className={styles.detailJuso}
+                value={state?.detailJuso || ''}
+                onChange={(e) => {
+                    const value = e.target.value;
+                    dispatch({ type: 'detailJuso', value: value});
                 }}
             />
         </div>

@@ -1,20 +1,21 @@
 'use client'
 import { TypeCheckForm, Py, Region, Schedule, Contact, CallTime, Qna, Agree, Request } from "@/components/index";
 import styles from '@/styles/EstimateForm.module.css'
-import { reducer, initialState, State } from '@/components/forms/EstimateFormReducer'
-import { useReducer, useState } from "react";
+import { useState } from "react";
+import { State, useFormDispatch, useForms } from '@/components/forms/FormContext'
 
 const EstimateForm = () => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const state = useForms()
+    const dispatch = useFormDispatch()
     const [errorMessage, setErrorMessage] = useState('')
-    const handelInputValueChange = (type: keyof State, value: string | boolean) => {
-        dispatch({ type, value })
-    }
+
+
     // 폼 전체를 초기화하는 함수
     const resetForm = () => {
         dispatch({ type: 'RESET_FORM' });
     }
 
+    // DB에 Form전송
     const sendEstimateForm = async (state: {}) => {
         console.log('sendEstimateForm', state)
         try {
@@ -55,7 +56,7 @@ const EstimateForm = () => {
         ) {
             setErrorMessage('건물유형, 평형, 연락시간을 모두 선택주세요')
             return false;
-        } else if(regex.test(formValue.contact)){
+        } else if (!regex.test(formValue.contact)) {
             setErrorMessage('핸드폰 번호를 올바르게 입력해주세요')
             return false;
         }
@@ -67,18 +68,49 @@ const EstimateForm = () => {
             return true;
         }
     }
+    const sendSmsToUser = async (textContent: string, contact: string) => {
+        try {
+            const response = await fetch('/api/twilio/sendTextMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({ textContent, contact })
+            })
+            const result = await response.json()
+            if (result.success) console.log('문자전송성공')
+            else console.log('문자전송실패')
+        } catch (error) {
+            console.log('트윌로 문자요청 error', error)
+        }
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('무슨차이?', state)
+        // 유저에게 메세지 전송
+        const textContent = `
+        [집돌이즘] 상담이 접수 되었습니다.
+        `
+        console.log('state', state)
+
+        // twilio가 70자 이상은 sms단문으로 끊어서 발송이됨... solapi 유료결제전까지는 단문만 전송
+        // const textContent = `
+
+        //  [집돌이즘]
+        //  상담이 접수 되었습니다.
+        //  -지역 : ${state.juso + ' ' + state.detailJuso}
+        //  -타입 : ${state.homeType}
+        //  -평형 : ${state.py}
+        //  -연락가능시간 : ${state.callTime}
+        //  -문의내용 : ${state.qna}
+        //  `
         // form 검증, 서버전송
         if (verifyFormValue(state)) {
             sendEstimateForm(state)
             alert('상담이 접수되었습니다')
             resetForm()
-            console.log('state 제출', state)
+            // sendSmsToUser(textContent, state.contact)
         }
-        // 유저에게 메세지 전송
         // 관리자에게 nodemailer로 이메일전송
         // 페이지 새로고침
     }
@@ -87,14 +119,14 @@ const EstimateForm = () => {
             <div className={styles.form_container}>
                 <h3>문의내용 확인 후 1:1상담이 진행됩니다</h3>
                 <form onSubmit={handleSubmit}>
-                    <Region onChange={handelInputValueChange} />
-                    <TypeCheckForm onChange={handelInputValueChange} />
-                    <Py onChange={handelInputValueChange} />
-                    <Schedule onChange={handelInputValueChange} />
-                    <Contact onChange={handelInputValueChange} />
-                    <CallTime onChange={handelInputValueChange} />
-                    <Qna onChange={handelInputValueChange} />
-                    <Agree onChange={handelInputValueChange} />
+                    <Region />
+                    <TypeCheckForm />
+                    <Py />
+                    <Schedule />
+                    <Contact />
+                    <CallTime />
+                    <Qna />
+                    <Agree />
                     <Request />
                     {errorMessage !== '' && <p style={{ color: 'red', margin: '1rem 0' }}>{errorMessage}</p>}
                 </form>

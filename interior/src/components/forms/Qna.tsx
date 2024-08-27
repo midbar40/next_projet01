@@ -1,17 +1,16 @@
 'use client'
 import React from "react"
 import styles from '@/styles/Qna.module.css'
-import { State } from '@/components/forms/EstimateFormReducer'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
-interface QnaProps {
-    onChange: (type: keyof State, value: string | boolean) => void;
-}
+const Qna: React.FC = () => {
+    const dispatch = useFormDispatch()
+    const state = useForms()
 
-const Qna: React.FC<QnaProps> = ({ onChange }) => {
     const handleTextareaValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const type = e.target.name as keyof State;
         const value = e.target.value;
-        onChange(type, value.trim())
+        dispatch({ type, value: value})
     }
     return (
         <div className={styles.qna}>
@@ -20,6 +19,7 @@ const Qna: React.FC<QnaProps> = ({ onChange }) => {
                 id='qna'
                 name='qna'
                 placeholder="ex) 욕실만 리모델링 가능한가요?"
+                value={state?.qna || ''}
                 onChange={handleTextareaValue}
             />
         </div>

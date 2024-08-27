@@ -1,17 +1,17 @@
 'use client'
 import React from "react"
 import styles from '@/styles/Contact.module.css'
-import { State } from '@/components/forms/EstimateFormReducer'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
-interface ContactProps {
-    onChange: (type: keyof State, value: string | boolean) => void;
-}
 
-const Contact: React.FC<ContactProps> = ({ onChange }) => {
+
+const Contact: React.FC = ({   }) => {
+    const dispatch = useFormDispatch()
+    const state = useForms()
     const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const type = e.target.name as keyof State
         const value = e.target.value
-        onChange(type, value.trim())
+        if(dispatch) dispatch({ type, value: value })
     }
     return (
         <div className={styles.contact}>
@@ -21,6 +21,7 @@ const Contact: React.FC<ContactProps> = ({ onChange }) => {
                 id='mobile'
                 name='contact'
                 placeholder="ex) 01012341234"
+                value={state?.contact || ''}
                 onChange={handleInputValue}
             />
         </div>

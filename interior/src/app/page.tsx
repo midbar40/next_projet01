@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "@/styles/page.module.css";
-import { Header, Footer, MainSlide, GridCard, EstimateForm, ConsultProcess, StrongPoint } from "@/components/index";
+import { Header, Footer, MainSlide, GridCard,  ConsultProcess, StrongPoint } from "@/components/index";
+import FormWrappedEstimateForm from '@/components/forms/FormWrappedEstimateForm'
+
 import { ReadMoreBtn } from '@/components/ReadMoreBtn'
 import images from '@/data/mainImageData.json'
 import Link from 'next/link';
@@ -24,7 +26,7 @@ export default function Home() {
           <ConsultProcess />
         </section>
         <section className={styles.estimate}>
-          <EstimateForm />
+          <FormWrappedEstimateForm />
         </section>
       </main>
       <footer className={styles.footerSection}>

@@ -1,7 +1,7 @@
 'use client'
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from '@/styles/TypeCheckForm.module.css'
-import { State } from '@/components/forms/EstimateFormReducer'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
 const type = [
     { id: 1, value: '아파트' },
@@ -11,14 +11,20 @@ const type = [
     { id: 5, value: '상가' },
 ]
 
-interface TypeCheckFormProps {
-    onChange: (type: keyof State, value: string | boolean) => void;
-}
-
-const TypeCheckForm: React.FC<TypeCheckFormProps> = ({ onChange }) => {
+const TypeCheckForm: React.FC = () => {
+    const dispatch = useFormDispatch()
+    const state = useForms()
     const [selectedId, setSelectedId] = useState<number | null>(null); // 클릭된 요소의 ID를 저장
-    const [selectedType, setSelectedType] = useState<keyof State | null>(null);
-    const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+  // useEffect를 사용하여 상태가 업데이트 될 때 선택 상태를 동기화
+  useEffect(() => {
+    const selectedType = type.find(t => t.value === state.homeType);
+    if (selectedType) {
+        setSelectedId(selectedType.id);
+    } else {
+        setSelectedId(null);
+    }
+}, [state.homeType]);
 
 
     const handleValueAndStyle = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -26,16 +32,12 @@ const TypeCheckForm: React.FC<TypeCheckFormProps> = ({ onChange }) => {
         const value = dataset.value as string;
         const type = dataset.type as keyof State;
         const id = parseInt(dataset.id as string)
-        if(selectedId === id && selectedType === type && selectedValue === value){
+        if (selectedId === id) {
             setSelectedId(null);
-            setSelectedType(null);
-            setSelectedValue(null);
-            onChange(type, ''); // 빈값으로 설정
+            dispatch({ type, value: '' }); // 빈값으로 설정
         } else {
             setSelectedId(id);
-            setSelectedType(type);
-            setSelectedValue(value);
-            onChange(type, value);
+            dispatch({ type, value });
         }
     }
     return (

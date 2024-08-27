@@ -1,17 +1,18 @@
-import { Header, Footer, EstimateForm } from "@/components"
+import { Header, Footer } from "@/components"
+import FormWrappedEstimateForm from '@/components/forms/FormWrappedEstimateForm'
 
 export default function page() {
-    return(
+    return (
         <>
             <Header />
             <div style={{
-                    marginTop: '10rem',
-                    backgroundColor: 'rgb(255, 255, 255)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
+                marginTop: '10rem',
+                backgroundColor: 'rgb(255, 255, 255)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}>
-                <EstimateForm />
+                <FormWrappedEstimateForm />
             </div>
             <Footer />
         </>

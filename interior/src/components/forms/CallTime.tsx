@@ -1,8 +1,8 @@
 
 'use client'
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from '@/styles/CallTime.module.css'
-import { State } from '@/components/forms/EstimateFormReducer'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
 const time = [
   { id: 1, value: '오전' },
@@ -11,31 +11,29 @@ const time = [
   { id: 4, value: '상관없음' },
 ]
 
-interface CallTimeProps {
-  onChange: (type: keyof State, value: string | boolean) => void;
-}
 
-const CallTime: React.FC<CallTimeProps> = ({ onChange }) => {
+const CallTime: React.FC = () => {
+  const dispatch = useFormDispatch()
+  const state = useForms()
   const [selectedId, setSelectedId] = useState<number | null>(null); // 클릭된 요소의 ID를 저장
-  const [selectedCallTime, setSelectedCallTime] = useState<keyof State | null>(null);
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
+  useEffect(() => {
+    const selectedCallTime = time.find(t => t.value === state.callTime)
+    if (selectedCallTime) { setSelectedId(selectedCallTime.id) }
+    else { setSelectedId(null) }
+  }, [state.callTime])
 
   const handleValueAndStyle = (e: React.MouseEvent<HTMLDivElement>) => {
     const { dataset } = e.currentTarget;
     const value = dataset.value as string;
     const type = dataset.type as keyof State;
     const id = parseInt(dataset.id as string)
-    if (selectedId === id && selectedCallTime === type && selectedValue === value) {
+    if (selectedId === id) {
       setSelectedId(null);
-      setSelectedCallTime(null);
-      setSelectedValue(null);
-      onChange(type, ''); // 빈값으로 설정
+      dispatch({ type, value: '' }); // 빈값으로 설정
     } else {
       setSelectedId(id);
-      setSelectedCallTime(type);
-      setSelectedValue(value);
-      onChange(type, value);
+      dispatch({ type, value });
     }
   }
   return (
@@ -53,7 +51,7 @@ const CallTime: React.FC<CallTimeProps> = ({ onChange }) => {
             style={{
               backgroundColor: selectedId === time.id ? 'blue' : '#fff',
               color: selectedId === time.id ? '#fff' : '#333'
-          }}
+            }}
           >
             <span>{time.value}</span>
           </div>

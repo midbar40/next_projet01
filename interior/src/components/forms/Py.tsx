@@ -1,7 +1,7 @@
 'use client'
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from '@/styles/Py.module.css'
-import { State } from '@/components/forms/EstimateFormReducer'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
 const py = [
     { id: 1, value: '10평대' },
@@ -10,29 +10,32 @@ const py = [
     { id: 4, value: '40평대' },
     { id: 5, value: '50평이상' }
 ]
-interface pyProops {
-    onChange: (type: keyof State, value: string | boolean) => void;
-}
-const Py: React.FC<pyProops> = ({ onChange }) => {
+
+const Py: React.FC = () => {
+    const dispatch = useFormDispatch()
+    const state = useForms()
     const [selectedId, setSelectedId] = useState<number | null>(null); // 클릭된 요소의 ID를 저장
-    const [selectedPy, setSelectedPy] = useState<keyof State | null>(null);
-    const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+    useEffect(() => {
+        const selectedPy = py.find(t => t.value === state.py);
+        if (selectedPy) {
+            setSelectedId(selectedPy.id);
+        } else {
+            setSelectedId(null);
+        }
+    }, [state.py])
 
     const handleValueAndStyle = (e: React.MouseEvent<HTMLDivElement>) => {
         const { dataset } = e.currentTarget;
         const value = dataset.value as string;
         const type = dataset.type as keyof State;
         const id = parseInt(dataset.id as string)
-        if (selectedId === id && selectedPy === type && selectedValue === value) {
+        if (selectedId === id) {
             setSelectedId(null);
-            setSelectedPy(null);
-            setSelectedValue(null);
-            onChange(type, ''); // 빈값으로 설정
+            dispatch({ type, value: '' }); // 빈값으로 설정
         } else {
             setSelectedId(id);
-            setSelectedPy(type);
-            setSelectedValue(value);
-            onChange(type, value);
+            dispatch({ type, value });
         }
     }
     return (

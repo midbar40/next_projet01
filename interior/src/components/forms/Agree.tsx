@@ -1,17 +1,23 @@
 'use client'
-import React, { useState } from "react"
-import styles from '../../styles/Agree.module.css'
-import { State } from '../forms/EstimateFormReducer'
+import React, { useState, useEffect } from "react"
+import styles from '@/styles/Agree.module.css'
+import { useFormDispatch, State, useForms } from '@/components/forms/FormContext'
 
-interface AgreeProps {
-  onChange: (type: keyof State, value: string | boolean) => void;
-}
+const Agree: React.FC = () => {
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const dispatch = useFormDispatch()
+  const state = useForms()
 
-const Agree: React.FC<AgreeProps> = ({ onChange }) => {
-  const handleCheckboxChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  // 상태 동기화: state.agree와 isChecked를 동기화합니다.
+  useEffect(() => {
+    setIsChecked(state.agree);
+  }, [state.agree]);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const type = e.target.name as keyof State;
     const value = e.target.checked;
-    onChange(type, value);
+    setIsChecked(true)
+    dispatch({ type, value });
   }
   return (
     <div className={styles.agree}>
@@ -19,6 +25,7 @@ const Agree: React.FC<AgreeProps> = ({ onChange }) => {
         type="checkbox"
         id='agree'
         name='agree'
+        checked={isChecked}
         onChange={handleCheckboxChange}
       />
       <label htmlFor="agree">개인정보수집이용 동의</label>
