@@ -1,7 +1,7 @@
 // /app/admin/layout.tsx
 'use client'
 import { useState, useEffect, ReactNode } from 'react';
-import { useRouter,usePathname  } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 interface AdminLayoutProps {
@@ -22,12 +22,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
     return (
         <div>
-            <nav>
+            <nav style={{display : 'flex', gap: '20px', marginTop : '2rem', marginLeft : '2rem'}}>
                 <Link href="/admin/dashboard">Dashboard</Link>
                 <Link href="/admin/login">Login</Link>
                 <Link href="/admin/signup">Signup</Link>
             </nav>
             <main>{children}</main>
-        </div>
+        </div >
     );
 }

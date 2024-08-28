@@ -34,11 +34,18 @@ export default function AdmitAdmin() {
                 console.log('서버 GET Unknown error', error)
             }
         }
-       if(developAuth) getAdminReqInfo()
+        if (developAuth) getAdminReqInfo()
     }, [developAuth])
 
-    if(!developAuth) return ( <DevelopAuth setDevelopAuth={setDevelopAuth}/>)
-
+    if (!developAuth) return (<DevelopAuth setDevelopAuth={setDevelopAuth} />)
+    const handleApproval = (id: string) => {
+        // 서버에서 status pending을 approved로 변경, PUT method
+        // 등록된 이메일로 approved되었으니 로그인하라는 메시지와 링크 남기기
+    }
+    const handleDenial = (id: string) => {
+        // 서버에서 status pending을 denied로 변경, PUT method
+        // 등록된 이메일로 denied 알림
+    }
     return (
         <div className={styles.main}>
             <div className={styles.title}>
@@ -69,8 +76,8 @@ export default function AdmitAdmin() {
                                 <td>{item.email}</td>
                                 <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
                                 <td>{item.status}</td>
-                                <td>승인</td>
-                                <td>거절</td>
+                                <td onClick={() => handleApproval(item.id)} style={{ color: 'blue', cursor: "pointer" }}>승인</td>
+                                <td onClick={() => handleDenial(item.id)} style={{ color: 'red', cursor: "pointer" }}>거절</td>
                             </tr>
                         ))}
                     </tbody>

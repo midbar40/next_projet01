@@ -88,3 +88,31 @@ export async function GET() {
         }
     }
 }
+
+export async function PUT(req: Request) {
+    const body = await req.json()
+    const id = body.id;
+    let connection;
+    try {
+        connection = await connectMysql()
+        if (connection) {
+            const [result] = await connection.query(`UPDATE admin SET status='approved' WHERE id = ${id}`)
+            console.log('PUT tableDB successfully')
+            return NextResponse.json({ success: true, result })
+        } else {
+            console.error('Connection is undefined');
+            return NextResponse.json({ success: false, error: 'Connection is undefined' });
+        }
+    } catch (error) {
+        console.error('PUT DBTable error', error)
+        return NextResponse.json({ success: false, error })
+    } finally {
+        if (connection) {
+            try {
+                await connection.end();
+            } catch (error) {
+                console.error('Error ending connection:', error);
+            }
+        }
+    }
+}
