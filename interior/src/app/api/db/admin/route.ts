@@ -91,13 +91,21 @@ export async function GET() {
 
 export async function PUT(req: Request) {
     const body = await req.json()
-    const id = body.id;
+    const id = body.id; // ID를 정수로 변환
+    const status = body.status; // 업데이트할 상태
+    console.log('body', body)
+    console.log('id', id)
+    console.log('status', status)
+   
     let connection;
     try {
         connection = await connectMysql()
         if (connection) {
-            const [result] = await connection.query(`UPDATE admin SET status='approved' WHERE id = ${id}`)
-            console.log('PUT tableDB successfully')
+            const [result] = await connection.query(
+                'UPDATE admin SET status = ? WHERE id = ?',
+                [status, id] // 상태와 ID를 쿼리 파라미터로 전달
+            );
+            console.log('result',result)
             return NextResponse.json({ success: true, result })
         } else {
             console.error('Connection is undefined');

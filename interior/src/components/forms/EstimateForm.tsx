@@ -85,7 +85,7 @@ const EstimateForm = () => {
 
     const sendEmailToAdmin = async (state: {}) => {
         try {
-            const response = await fetch('/api/nodemailer', {
+            const response = await fetch('/api/nodemailer/reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json"
