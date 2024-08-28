@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
-// import AdminLogin from "@/app/admin/login/page";
 import styles from '@/app/admin/dashboard/page.module.css'
 
 // User 정보 타입 정의
@@ -12,7 +11,7 @@ interface Admin {
     email : string;
     created_at: string;
 }
-export default function AdmitAdmin ({authentication}) {
+export default function AdmitAdmin () {
     const [userInfo, setUserInfo] = useState<Admin[]>([]);
     const getUserData = async () => {
         try {
@@ -27,14 +26,6 @@ export default function AdmitAdmin ({authentication}) {
             console.error('Error fetching user data:', error);
         }
     };
-
-    useEffect(() => {
-        if (authentication) getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
-    }, [authentication]); // 빈 배열로 의존성 설정
-
-    // if (!authentication) return (
-    //     <AdminLogin />
-    // )
 
     return (
         <div className={styles.main}>
@@ -54,19 +45,14 @@ export default function AdmitAdmin ({authentication}) {
                         </tr>
                     </thead>
                     <tbody>
-                        {userInfo.map((item, index) => (
+                        {/* {userInfo.map((item, index) => (
                             <tr key={item.contact}>
                                 <td>{index + 1}</td>
                                 <td>{item.contact}</td>
-                                <td>{item.address}</td>
-                                <td>{item.type}</td>
-                                <td>{item.py}</td>
-                                <td>{item.schedule}</td>
-                                <td>{item.callTime}</td>
-                                <td>{item.qna}</td>
+
                                 <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
                             </tr>
-                        ))}
+                        ))} */}
                     </tbody>
                 </table>
             </div>

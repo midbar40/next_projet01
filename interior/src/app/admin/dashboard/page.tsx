@@ -15,7 +15,7 @@ interface User {
     qna: string;
     created_at: string;
 }
-export default function AdminDashboard({authentication}) {
+export default function AdminDashboard() {
     const [userInfo, setUserInfo] = useState<User[]>([]);
     const getUserData = async () => {
         try {
@@ -31,13 +31,9 @@ export default function AdminDashboard({authentication}) {
         }
     };
 
-    useEffect(() => {
-        if (authentication) getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
-    }, [authentication]); // 빈 배열로 의존성 설정
-
-    // if (!authentication) return (
-    //     <AdminLogin />
-    // )
+    // useEffect(() => {
+    //     if (authentication) getUserData(); // 컴포넌트가 마운트될 때 데이터 가져오기
+    // }, [authentication]); // 빈 배열로 의존성 설정
 
     return (
         <div className={styles.main}>

@@ -19,7 +19,7 @@ const EstimateForm = () => {
     const sendEstimateForm = async (state: {}) => {
         console.log('sendEstimateForm', state)
         try {
-            const response = await fetch('/api/db', {
+            const response = await fetch('/api/db/reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json"

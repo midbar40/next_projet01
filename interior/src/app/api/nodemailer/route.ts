@@ -40,15 +40,10 @@ export async function POST(req: Request) {
             subject: "[집돌이즘] 유저 상담이 등록되었습니다.",
             text: emailContent,
             //   html: "<b>Hello world?</b>", // html bodysS
-        }, (error, info) => {
-            if (error) {
-                console.log('nodemailer전송에러', error)
-                return NextResponse.json({ success: false, message: '이메일 전송 실패' })
-            } else {
-                console.log('nodemailer Info', info)
-                return NextResponse.json({ success: true, message: '이메일 전송 성공' })
-            }
         });
+        // 메일 전송 성공 시 응답 반환
+        console.log('nodemailer Info', '이메일 전송 성공');
+        return NextResponse.json({ success: true, message: '이메일 전송 성공' });
     } catch (error) {
         console.log('nodemailer Post error', error)
         return NextResponse.json({ success: false, message: '이메일 전송 실패' })

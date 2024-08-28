@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { connectMysql, createTable } from './dbquerys';
+import { connectMysql } from '@/app/api/db/connectDb'
+import { createTable } from './createReservationTable';
 
 createTable().catch(err => console.error('Unhandled error:', err));
 
