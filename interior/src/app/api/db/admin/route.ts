@@ -6,13 +6,13 @@ import bcrypt from 'bcrypt'
 createTable().catch(err => console.error('Unhandled error:', err));
 
 // hash암호화 함수
-async function hashPassword(pw:string){
+async function hashPassword(pw: string) {
     try {
         const saltRounds = 10
         const hashedPassword = await bcrypt.hash(pw, saltRounds)
         return hashedPassword
     } catch (error) {
-        console.log('hash암호화 실패',error)
+        console.log('hash암호화 실패', error)
     }
 }
 
@@ -46,10 +46,10 @@ export async function POST(req: Request) {
             return NextResponse.json({ success: false, error: 'Connection is undefined' });
         }
     }
-    catch (error) {
-        
+    catch (error: unknown) {
         console.error('DB 저장 error', error)
-        return NextResponse.json({ success: false, error })
+        if ((error as any).code === 'ER_DUP_ENTRY') { return NextResponse.json({ success: false, message: '중복가입오류' }) }
+        else { return NextResponse.json({ success: false, message: '관리자 등록 요청에 실패했습니다' }) }
     }
     finally {
         // 연결 종료

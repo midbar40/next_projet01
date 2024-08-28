@@ -1,31 +1,43 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
-import styles from '@/app/admin/dashboard/page.module.css'
+import styles from '@/app/admin/admitAdmin/page.module.css'
+import DevelopAuth from '@/app/admin/admitAdmin/DevelopAuth'
 
 // User 정보 타입 정의
 interface Admin {
-    id : string;
-    name : string;
+    id: string;
+    name: string;
     contact: string;
-    email : string;
+    email: string;
     created_at: string;
+    status: string;
 }
-export default function AdmitAdmin () {
-    const [userInfo, setUserInfo] = useState<Admin[]>([]);
-    const getUserData = async () => {
-        try {
-            const response = await fetch('/api/db');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+
+export default function AdmitAdmin() {
+    const [adminInfo, setAdminInfo] = useState<Admin[]>([]);
+    const [developAuth, setDevelopAuth] = useState<boolean>(false);
+    useEffect(() => {
+        // 서버에서 관리자 요청자 정보 가져오기
+        const getAdminReqInfo = async () => {
+            try {
+                const response = await fetch('/api/db/admin', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const result = await response.json()
+                if (result.success) setAdminInfo(result.result)
+                else console.log('서버 GET error', result.error)
+            } catch (error) {
+                console.log('서버 GET Unknown error', error)
             }
-            const serverData = await response.json();
-            console.log('serverData', serverData)
-            setUserInfo(serverData.result); // 서버 데이터에서 사용자 정보 추출
-        } catch (error) {
-            console.error('Error fetching user data:', error);
         }
-    };
+       if(developAuth) getAdminReqInfo()
+    }, [developAuth])
+
+    if(!developAuth) return ( <DevelopAuth setDevelopAuth={setDevelopAuth}/>)
 
     return (
         <div className={styles.main}>
@@ -42,17 +54,25 @@ export default function AdmitAdmin () {
                             <th>연락처</th>
                             <th>이메일</th>
                             <th>등록일</th>
+                            <th>상태</th>
+                            <th>승인</th>
+                            <th>거절</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {userInfo.map((item, index) => (
+                        {adminInfo.map((item: Admin, index: number) => (
                             <tr key={item.contact}>
                                 <td>{index + 1}</td>
+                                <td>{item.id}</td>
+                                <td>{item.name}</td>
                                 <td>{item.contact}</td>
-
+                                <td>{item.email}</td>
                                 <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
+                                <td>{item.status}</td>
+                                <td>승인</td>
+                                <td>거절</td>
                             </tr>
-                        ))} */}
+                        ))}
                     </tbody>
                 </table>
             </div>

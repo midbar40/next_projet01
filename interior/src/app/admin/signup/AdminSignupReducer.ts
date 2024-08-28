@@ -6,10 +6,10 @@ export type State = {
     email: string;
 }
 
-export type Action = {
-    type: keyof State;
-    value: string;
-}
+export type Action =
+    | { type: 'RESET_FORM' }  // 폼 전체 초기화 액션
+    | { type: keyof State; value: string | boolean };  // 단일 필드 업데이트 액션
+
 
 export const initialState: State = {
     id: '',
@@ -20,9 +20,14 @@ export const initialState: State = {
 }
 
 export function reducer(state: State, action: Action): State {
-    return {
-        ...state,
-        [action.type]: action.value
+    switch (action.type) {
+        case 'RESET_FORM':
+            return initialState;  // 폼 초기화
+        default:
+            return {
+                ...state,
+                [action.type]: action.value,  // 필드 업데이트
+            };
     }
 }
 
