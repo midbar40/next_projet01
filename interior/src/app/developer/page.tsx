@@ -1,8 +1,8 @@
 'use client'
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
-import styles from '@/app/admin/admitAdmin/page.module.css'
-import DevelopAuth from '@/app/admin/admitAdmin/DevelopAuth'
+import styles from '@/app/developer/page.module.css'
+import DevelopAuth from '@/app/developer/DevelopAuth'
 
 
 // User 정보 타입 정의
@@ -37,7 +37,7 @@ export default function AdmitAdmin() {
     const [adminInfo, setAdminInfo] = useState<Admin[]>([]);
     const [developAuth, setDevelopAuth] = useState<boolean>(false);
 
-    const getAdminReqInfo = useCallback(async () => {
+    const getAdminReqInfo = async () => {
         try {
             const response = await fetch('/api/db/admin', {
                 method: 'GET',
@@ -51,12 +51,13 @@ export default function AdmitAdmin() {
         } catch (error) {
             console.log('서버 GET Unknown error', error)
         }
-    }, [])
+    }
 
     useEffect(() => {
         // 서버에서 관리자 요청자 정보 가져오기
+        // status가 변경되면 자동 dom업데이트가 되어야하는데 안되고 있음, 의존성배열에 adminInfo를 넣으면 무한루프가 발생함
         if (developAuth) getAdminReqInfo()
-    }, [developAuth, adminInfo])
+    }, [developAuth])
 
     if (!developAuth) return (<DevelopAuth setDevelopAuth={setDevelopAuth} />)
     const handleApproval = async (id: string, email: string) => {
