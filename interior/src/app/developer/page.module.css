@@ -4,7 +4,12 @@
     justify-content: center;
     align-items: center;
 }
-
+.logout{
+    cursor: pointer;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
 .title {
     margin: 3rem 0;
 }

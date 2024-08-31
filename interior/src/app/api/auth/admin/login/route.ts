@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { connectMysql } from '@/app/api/db/connectDb'
 import bcrypt from 'bcrypt'
 import { RowDataPacket } from 'mysql2';
-import {  encrypt } from '../jwtToken'
+import { encrypt } from '../../jwtToken'
 
 // 예시로 쿼리에서 반환될 데이터의 구조를 명확히 정의
 interface Admin extends RowDataPacket {
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
                 const isMatch = await bcrypt.compare(password, admin.pw);
                 if (isMatch && admin.status === 'approved') {
                     // 쿠키설정
-                    const token = await encrypt(id)
+                    const token = await encrypt(id, 'admin')
                     console.log('jwtToken', token)
                     const response = NextResponse.json({ success: true, message: 'admin 로그인 성공' })
                     response.cookies.set("access-token", token, { httpOnly: true, path: '/' })

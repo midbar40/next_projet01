@@ -1,8 +1,8 @@
 'use client'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import styles from './DevelopAuth.module.css'
+import styles from './DevelopLogin.module.css'
 
-interface DevelopAuthProps {
+interface DevelopLoginProps {
     setDevelopAuth: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -25,7 +25,7 @@ const checkPassword = async (password: string) => {
     }
 }
 
-export default function DevelopAuth({ setDevelopAuth }: DevelopAuthProps) {
+export default function DevelopLogin({ setDevelopAuth }: DevelopLoginProps) {
     const [password, setPassword] = useState('')
     const handleDelvopAuth = async (e: React.FormEvent) => {
         e.preventDefault()
