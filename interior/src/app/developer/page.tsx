@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
 import styles from '@/app/developer/page.module.css'
 import DevelopLogin from '@/app/developer/DevelopLogin'
-
+import AdmitDashboard from '@/app/developer/AdmintDashboard'
 
 // User 정보 타입 정의
 interface Admin {
@@ -15,28 +15,13 @@ interface Admin {
     status: string;
 }
 
-const sendEmailToAdmin = async (email: string, id: string, status: string) => {
-    try {
-        const response = await fetch('/api/nodemailer/adminAuth', {
-            method: 'POST',
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify({ email, id, status: 'approved' })
-        })
-        const result = await response.json()
-        console.log('nodemailer result', result)
-        if (result.success) console.log('메일전송성공')
-        else console.log('메일전송실패')
-    } catch (error) {
-        console.log('nodemailer Error', error)
-    }
-}
 
-export default function AdmitAdmin() {
+
+export default function DevelopHome() {
     const [adminInfo, setAdminInfo] = useState<Admin[]>([]);
     const [developAuth, setDevelopAuth] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
+    const [dataLoaded, setDataLoaded] = useState(false); // 서버 데이터가 로드되었는지 여부
 
     const getAdminReqInfo = async () => {
         try {
@@ -47,13 +32,15 @@ export default function AdmitAdmin() {
                 }
             })
             const result = await response.json()
-            if (result.success) setAdminInfo(result.result)
+            if (result.success) {
+                setAdminInfo(result.result)
+                setDataLoaded(true)
+            }
             else console.log('서버 GET error', result.error)
         } catch (error) {
             console.log('서버 GET Unknown error', error)
         }
     }
-
     useEffect(() => {
         const checkLoginStatus = async () => {
             const response = await fetch('/api/auth/developer/check-auth', {
@@ -62,117 +49,48 @@ export default function AdmitAdmin() {
             console.log('레이아웃response', response)
             if (response.ok) {
                 setDevelopAuth(true)
-                setLoading(false)
+                getAdminReqInfo()
             } else {
                 setDevelopAuth(false)
             }
         }
         checkLoginStatus()
+        setTimeout(() => setLoading(false), 100)
     }, [developAuth])
 
-    useEffect(() => {
-        // 서버에서 관리자 요청자 정보 가져오기
-        if (developAuth) getAdminReqInfo()
-            }, [developAuth])
 
-    const handleApproval = async (id: string, email: string) => {
-        console.log('adminInfo', adminInfo)
-        // 서버에서 status pending을 approved로 변경, PUT method
-        try {
-            const response = await fetch('/api/db/admin', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id, status: 'approved' })
-            })
-            const result = await response.json()
-            if (result.success) {
-                alert('승인되었습니다')
-                sendEmailToAdmin(email, id, 'approved')
-                return true
-            } else {
-                alert('승인 실패');
-            }
-        } catch (error) {
-            console.log('승인 error', error)
-            alert('승인 처리 중 오류가 발생했습니다');
-        }
-    }
-    const handleDenial = async (id: string, email: string) => {
-        // 서버에서 status pending을 denied로 변경, PUT method
-        try {
-            const response = await fetch('/api/db/admin', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ id, status: 'denied' })
-            })
-            const result = await response.json()
-            if (result.success) {
-                alert('거절되었습니다')
-                sendEmailToAdmin(email, id, 'denied')
-                return true
-            } else {
-                alert('거절 실패');
-            }
-        } catch (error) {
-            console.log('거절 error', error)
-            alert('거절 처리 중 오류가 발생했습니다');
-        }
-    }
-    const handleLogout = async () => {
-        try {
-            await fetch('/api/auth/developer/logout', {
-                credentials: 'include'
-            });
-            setDevelopAuth(false);
-        } catch (error) {
-            console.error('Logout failed', error);
-        }
-    }
     return (
         <>
-            {developAuth ? (
-                <div className={styles.main}>
-                    <div className={styles.logout}><span onClick={handleLogout}>로그아웃</span></div>
-                    <div className={styles.title}>
-                        <h1>견적문의 예약현황</h1>
-                    </div>
-                    <div className={styles.table}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>아이디</th>
-                                    <th>이름</th>
-                                    <th>연락처</th>
-                                    <th>이메일</th>
-                                    <th>등록일</th>
-                                    <th>상태</th>
-                                    <th>승인</th>
-                                    <th>거절</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {adminInfo.map((item: Admin, index: number) => (
-                                    <tr key={item.contact}>
-                                        <td>{index + 1}</td>
-                                        <td>{item.id}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.contact}</td>
-                                        <td>{item.email}</td>
-                                        <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
-                                        <td>{item.status}</td>
-                                        <td onClick={() => handleApproval(item.id, item.email)} style={{ color: 'blue', cursor: "pointer" }}>승인</td>
-                                        <td onClick={() => handleDenial(item.id, item.email)} style={{ color: 'red', cursor: "pointer" }}>거절</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>) :  <DevelopLogin setDevelopAuth={setDevelopAuth} />}
+            {loading ? (
+                <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100vh',
+                    fontSize: '2rem'
+                }}>
+                    Loading...
+                </div>
+            ) :
+                (
+                    developAuth ? (
+                        dataLoaded && <AdmitDashboard
+                            adminInfo={adminInfo}
+                            setAdminInfo={setAdminInfo}
+                            developAuth={developAuth}
+                            setDevelopAuth={setDevelopAuth}
+                            setLoading={setLoading}
+                            getAdminReqInfo={getAdminReqInfo}
+                        />
+                    ) : (
+                        <DevelopLogin setDevelopAuth={setDevelopAuth} />
+                    )
+                )
+            }
         </>
-    )
-}
+    );
+}    
