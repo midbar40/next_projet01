@@ -17,7 +17,6 @@ const EstimateForm = () => {
 
     // DB에 Form전송
     const sendEstimateForm = async (state: {}) => {
-        console.log('sendEstimateForm', state)
         try {
             const response = await fetch('/api/db/reservation', {
                 method: 'POST',
@@ -27,9 +26,6 @@ const EstimateForm = () => {
                 body: JSON.stringify({ state })
             })
             const result = await response.json()
-            console.log('sendEstimateForm result', result)
-
-
         } catch (error) {
             console.error("서버전송Error", error)
         }
@@ -93,7 +89,6 @@ const EstimateForm = () => {
                 body: JSON.stringify({ state })
             })
             const result = await response.json()
-            console.log('nodemailer result', result)
             if (result.success) console.log('메일전송성공')
             else console.log('메일전송실패')
         } catch (error) {
@@ -108,25 +103,11 @@ const EstimateForm = () => {
         const textContent = `
         [집돌이즘] 상담이 접수 되었습니다.
         `
-        console.log('state', state)
-
-        // twilio가 70자 이상은 sms단문으로 끊어서 발송이됨... solapi 유료결제전까지는 단문만 전송
-        // const textContent = `
-
-        //  [집돌이즘]
-        //  상담이 접수 되었습니다.
-        //  -지역 : ${state.juso + ' ' + state.detailJuso}
-        //  -타입 : ${state.homeType}
-        //  -평형 : ${state.py}
-        //  -연락가능시간 : ${state.callTime}
-        //  -문의내용 : ${state.qna}
-        //  `
-        // form 검증, 서버전송
         if (verifyFormValue(state)) {
             sendEstimateForm(state)
             alert('상담이 접수되었습니다')
             resetForm()
-            // sendSmsToUser(textContent, state.contact)
+            sendSmsToUser(textContent, state.contact)
         }
         // 관리자에게 nodemailer로 이메일전송
             sendEmailToAdmin(state)

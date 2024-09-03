@@ -25,26 +25,46 @@ const PostPage = ({ params }: { params: { id: string } }) => {
           </div>
           <div className={styles.paraImg}>
             <h2>{post.description}</h2>
-            <Image src={post.src} alt={post.alt}/>
+            <Image
+              src={post.src}
+              alt={post.alt}
+              width={850}
+              height={600}
+            />
           </div>
           <div className={styles.paraText}>
             <p>{post.description}</p>
           </div>
 
           <div className={styles.paraImg}>
-            <Image src={post.src_01} alt={post.alt_01} />
+            <Image
+              src={post.src_01}
+              alt={post.alt_01}
+              width={850}
+              height={600}
+            />
           </div>
           <div className={styles.paraText}>
             <p>{post.description_01}</p>
           </div>
           <div className={styles.paraImg}>
-            <Image src={post.src_02} alt={post.alt_02}/>
+            <Image
+              src={post.src_02}
+              alt={post.alt_02}
+              width={850}
+              height={600}
+            />
           </div>
           <div className={styles.paraText}>
             <p>{post.description_02}</p>
           </div>
           <div className={styles.paraImg}>
-            <Image src={post.src_03} alt={post.alt_03}/>
+            <Image
+              src={post.src_03}
+              alt={post.alt_03}
+              width={850}
+              height={600}
+            />
           </div>
           <div className={styles.paraText}>
             <p>{post.description_03}</p>

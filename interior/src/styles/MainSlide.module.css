@@ -29,8 +29,6 @@
 }
 
 .slider img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -38,8 +36,7 @@
 }
 
 .mainText {
-  right: 5%;
-  top: 20%;
+
   position: absolute;
   color: #fff;
   z-index: 99;
@@ -47,6 +44,16 @@
   font-family: 'Freesentation-9Black';
   opacity: 0;
   animation: fadeIn 3s forwards;
+}
+
+.right {
+  right: 5%;
+  top: 20%;
+}
+
+.left {
+  left: 5%;
+  top: 20%;
 }
 
 .mainText p:last-child {
@@ -117,5 +124,15 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainText {
+    font-size: 3.5rem;
+  }
+
+  .mainText p:last-child {
+    font-size: 2.5rem;
   }
 }

@@ -25,7 +25,8 @@
 }
 
 .paraImg {
-    width: 100%;
+    max-width: 80%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,9 +40,9 @@
     font-family: 'GmarketSansMedium';
 }
 
-.paraImg img {
+/* .paraImg img {
     width: 50%;
-}
+} */
 
 .paraText {
     width: 100%;

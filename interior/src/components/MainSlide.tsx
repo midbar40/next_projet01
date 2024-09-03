@@ -8,6 +8,7 @@ import Image from 'next/image'
 interface SlideProps {
     src: string;
     text: string[];
+    textPosition?: string;
 }
 
 const slides = [
@@ -15,27 +16,39 @@ const slides = [
         id: 1,
         src: '/images/main_section5.jpg',
         text: ['집에 가고 싶다...', '모두가 집돌이가 되는 그 곳', '엄마 00이네 집 너무 좋아', '# 대전 많은 집들의 시공사례를 확인해보세요'],
+        textPosition: 'right'
     },
     {
         id: 2,
         src: '/images/main_section1.jpg',
         text: ['2번 슬라이드', '넥슬라이스', '좋은 집이란 무엇일까', '# 내 집이 생겼으면 좋겠다'],
+        textPosition: 'left'
     },
     {
         id: 3,
         src: '/images/main_section3.jpg',
         text: ['3번 슬라이드', '넥슬라이스', '좋은 집이란 무엇일까', '# 내 집이 생겼으면 좋겠다'],
-    },
+        textPosition: 'right'
+    }
 ];
 
 // 복제된 슬라이드 배열
 const cloneSlides = [slides[slides.length - 1], ...slides, slides[0]];
+const slide = slides[0]; // 실제로는 이를 반복하여 렌더링할 것입니다
 
-export const Slide: React.FC<SlideProps> = ({ src, text }) => {
+export const Slide: React.FC<SlideProps> = ({ src, text, textPosition }) => {
     return (
         <div className={styles.slider}>
-            <Image src={src} alt="slide" />
-            <div className={styles.mainText}>
+            <Image
+                src={src}
+                alt="slide"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
+            />
+            <div
+                className={`${styles.mainText} ${textPosition === 'right' ? styles.right : styles.left}`}
+            >
                 {text.map((item, index) => (<p key={index}>{item}</p>))}
             </div>
         </div>
@@ -140,6 +153,7 @@ const MainSlide: React.FC = () => {
                         key={index}
                         text={item.text}
                         src={item.src}
+                        textPosition={item.textPosition}
                     />
                 ))}
             </div>
@@ -150,7 +164,7 @@ const MainSlide: React.FC = () => {
                 {showSliderIcon && <ChevronRightRoundedIcon className={styles.arrowIcon} onClick={handleSlideNext} />}
             </div>
             <div className={styles.dotBox}>
-            {slides.map((_, index) => (
+                {slides.map((_, index) => (
                     <div
                         className={`${styles.dot} ${currentSlide === index + 1 ? styles.dot_active : ''}`}
                         key={index}

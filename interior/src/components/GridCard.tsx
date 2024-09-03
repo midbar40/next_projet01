@@ -44,6 +44,8 @@ const GridCard: React.FC<Props> = ({ cards }) => {
                 <Image
                   src={item.src}
                   alt={item.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {hoveredItemId === item.id && (
                   <div className={styles.imageHeadline}>
