@@ -5,7 +5,7 @@ export async function createTable() {
         // 테이블 생성 쿼리
         await sql`
       CREATE TABLE IF NOT EXISTS reservation (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             contact VARCHAR(15) NOT NULL,  
             address VARCHAR(30) NOT NULL,    
             type VARCHAR(15) NOT NULL,     

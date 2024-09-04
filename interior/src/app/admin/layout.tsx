@@ -8,17 +8,7 @@ import { UserInfoProvider } from '@/app/admin/UserInfoContext'
 interface AdminLayoutProps {
     children: ReactNode; // children의 타입을 명시
 }
-// User 정보 타입 정의
-interface User {
-    contact: string;
-    address: string;
-    type: string;
-    py: string;
-    schedule: string;
-    callTime: string;
-    qna: string;
-    created_at: string;
-}
+
 // 동적으로 버튼을 변경하는 컴포넌트
 const Navigation: React.FC = () => {
     const { authentication, setAuthentication } = useAuth();
@@ -51,23 +41,8 @@ const Navigation: React.FC = () => {
 };
 export default function AdminLayout({ children }: AdminLayoutProps) {
     const [loading, setLoading] = useState(true);
-    const [userInfo, setUserInfo] = useState<User[]>([]);
 
-    const getUserData = async () => {
-        try {
-            const response = await fetch('/api/db/reservation');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const serverData = await response.json();
-            setUserInfo(serverData.result); // 서버 데이터에서 사용자 정보 추출
-        } catch (error) {
-            console.error('Error fetching user data:', error);
-        }
-    };
-    useEffect(() => {
-        setLoading(false)
-    }, []);
+    useEffect(() => { setLoading(false) }, []);
 
     return (
         <AuthProvider >

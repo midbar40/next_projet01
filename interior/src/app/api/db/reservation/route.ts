@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
+import { createTable } from './vercelPostgreCreateTable';
 
 
+createTable().catch(err => console.error('Error creating table:', err));
 
 export async function POST(req: Request) {
     const { state } = await req.json()

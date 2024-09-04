@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import { sql } from '@vercel/postgres';
+import { createTable } from './vercelPostgreCreateTable';
 import bcrypt from 'bcrypt'
 
+createTable().catch(err => console.error('Error creating table:', err));
 
 // hash암호화 함수
 async function hashPassword(pw: string) {

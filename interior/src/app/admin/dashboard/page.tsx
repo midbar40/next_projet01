@@ -1,8 +1,5 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
-// import AdminLogin from "@/app/admin/login/page";
-import styles from '@/app/admin/dashboard/page.module.css'
 import { useAuth } from '@/app/admin/AuthContext';  // 경로는 실제 파일 위치에 맞게 수정
 import { useRouter } from 'next/navigation'
 import DashboardComponent from '../DashboardComponent'

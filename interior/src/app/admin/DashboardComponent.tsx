@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKoreanTIme';
-// import AdminLogin from "@/app/admin/login/page";
 import styles from '@/app/admin/dashboard/page.module.css'
 import { useAuth } from '@/app/admin/AuthContext';  // 경로는 실제 파일 위치에 맞게 수정
 import { useRouter } from 'next/navigation'
@@ -40,7 +39,7 @@ export default function DashboardComponent() {
                         </tr>
                     </thead>
                     <tbody>
-                        {userInfo.map((item, index) => (
+                        {Array.isArray(userInfo) ? (userInfo?.map((item, index) => (
                             <tr key={item.contact}>
                                 <td>{index + 1}</td>
                                 <td>{item.contact}</td>
@@ -51,8 +50,8 @@ export default function DashboardComponent() {
                                 <td>{item.callTime}</td>
                                 <td>{item.qna}</td>
                                 <td>{convertUtcTimeToKoreanTime(item.created_at)}</td>
-                            </tr>
-                        ))}
+                            </tr>) 
+                        )): []}
                     </tbody>
                 </table>
             </div>
