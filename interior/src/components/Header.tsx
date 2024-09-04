@@ -6,16 +6,16 @@ import Image from 'next/image'
 
 const Header: React.FC = () => {
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 768);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window?.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window?.addEventListener('resize', handleResize);
+    return () => window?.removeEventListener('resize', handleResize);
   }, []);
   const handleMenuToggle = () => {
     setMenuOpen(prevOpen => !prevOpen)
