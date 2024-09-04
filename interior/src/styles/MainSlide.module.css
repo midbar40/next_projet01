@@ -36,11 +36,10 @@
 }
 
 .mainText {
-
   position: absolute;
   color: #fff;
   z-index: 99;
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: 'Freesentation-9Black';
   opacity: 0;
   animation: fadeIn 3s forwards;
@@ -48,12 +47,12 @@
 
 .right {
   right: 5%;
-  top: 20%;
+  top: 25%;
 }
 
 .left {
   left: 5%;
-  top: 20%;
+  top: 25%;
 }
 
 .mainText p:last-child {
@@ -72,8 +71,8 @@
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: #ffffff98;
   cursor: pointer;
@@ -98,11 +97,11 @@
 }
 
 .sliderLeftBtn svg {
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 .sliderRightBtn svg {
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 .arrowIcon {
@@ -129,10 +128,10 @@
 
 @media (max-width: 768px) {
   .mainText {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .mainText p:last-child {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }

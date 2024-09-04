@@ -8,7 +8,6 @@ interface DevelopLoginProps {
 
 // 서버에 암호확인
 const checkPassword = async (password: string) => {
-    console.log('checkPassword', password)
     try {
         const response = await fetch('/api/auth/developer', {
             method: 'POST',
@@ -29,7 +28,6 @@ export default function DevelopLogin({ setDevelopAuth }: DevelopLoginProps) {
     const [password, setPassword] = useState('')
     const handleDelvopAuth = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('password', password)
         const passwordMatched = await checkPassword(password)
         if (passwordMatched) {
             setDevelopAuth(true)
@@ -38,9 +36,7 @@ export default function DevelopLogin({ setDevelopAuth }: DevelopLoginProps) {
             alert('비밀번호가 일치하지 않습니다')
         }
     }
-    // useEffect(()=> {
-    //     console.log(password)
-    // }, [password])
+
     return (
         <div className={styles.main}>
             <div className={styles.title}>

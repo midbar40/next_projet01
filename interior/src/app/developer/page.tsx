@@ -22,6 +22,7 @@ export default function DevelopHome() {
     const [developAuth, setDevelopAuth] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
     const [dataLoaded, setDataLoaded] = useState(false); // 서버 데이터가 로드되었는지 여부
+    const [status, setStatus] = useState('')
 
     const getAdminReqInfo = async () => {
         try {
@@ -33,7 +34,7 @@ export default function DevelopHome() {
             })
             const result = await response.json()
             if (result.success) {
-                setAdminInfo(result.result)
+                setAdminInfo(result.result.rows)
                 setDataLoaded(true)
             }
             else console.log('서버 GET error', result.error)
@@ -46,10 +47,9 @@ export default function DevelopHome() {
             const response = await fetch('/api/auth/developer/check-auth', {
                 credentials: 'include',
             })
-            console.log('레이아웃response', response)
-            if (response.ok) {
+            const result = await response.json()
+            if (result.isLoggedIn) {
                 setDevelopAuth(true)
-                getAdminReqInfo()
             } else {
                 setDevelopAuth(false)
             }
@@ -58,6 +58,10 @@ export default function DevelopHome() {
         setTimeout(() => setLoading(false), 100)
     }, [developAuth])
 
+    useEffect(() => {
+        // 서버에서 관리자 요청자 정보 가져오기
+        getAdminReqInfo()
+    }, [status])
 
     return (
         <>
@@ -85,6 +89,8 @@ export default function DevelopHome() {
                             setDevelopAuth={setDevelopAuth}
                             setLoading={setLoading}
                             getAdminReqInfo={getAdminReqInfo}
+                            status={status}
+                            setStatus={setStatus}
                         />
                     ) : (
                         <DevelopLogin setDevelopAuth={setDevelopAuth} />

@@ -24,8 +24,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const response = await fetch('/api/auth/admin/check-auth', {
         credentials: 'include',
       })
-      console.log('레이아웃response', response)
-      if (response.ok) {
+      const result = await response.json()
+      if (result.isLoggedIn) {
         setAuthentication(true)
         router.push('/admin/dashboard')
 

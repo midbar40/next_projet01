@@ -6,7 +6,7 @@
 }
 .processHeadLine{
     display: flex;
-    margin-left: 20.5rem;
+    justify-content: center;
     margin-bottom: 2.5rem;
     align-items: center;
 }
@@ -17,9 +17,10 @@
 }
 
 .process_cards {
-    width: 70%;
+    width: 85%;
     flex-wrap: wrap;
     display: flex;
+    justify-content: center;
     margin: 0 auto;
     gap: 30px;
     font-family: 'GmarketSansMedium';

@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
         }
     };
     return (
-        <nav style={{ display: 'flex', gap: '20px', marginTop: '2rem', marginLeft: '2rem' }}>
+        <nav style={{ display: 'flex', gap: '20px', marginTop: '2rem', justifyContent: 'center' }}>
             <Link href="/admin/dashboard">Dashboard</Link>
             {authentication ? (
                 <>

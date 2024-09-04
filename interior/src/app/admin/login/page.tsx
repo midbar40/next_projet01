@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from '@/app/admin/login/page.module.css'
 import { useAuth } from '@/app/admin/AuthContext';  // 경로는 실제 파일 위치에 맞게 수정
@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation'
 
 export default function AdminLogin() {
     const [errorMessage, setErrorMessage] = useState('')
-
     const { authentication, setAuthentication } = useAuth()
     const router = useRouter()
     const [id, setId] = useState('')
@@ -35,7 +34,6 @@ export default function AdminLogin() {
             body: JSON.stringify({ id, password })
         })
         const result = await response.json()
-        console.log('로그인 요청 결과', result)
         if (result.success) {
             setAuthentication(true)
             router.push('/admin/dashboard')
@@ -50,8 +48,6 @@ export default function AdminLogin() {
 
     const submitAdminInfo = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('id', id)
-        console.log('password', password)
         if (verifyFormValue(id, password)) {
             await submitToServer()
             setId('')
@@ -59,7 +55,10 @@ export default function AdminLogin() {
         }
     }
 
-    if(authentication) return router.push('/admin/dashboard')
+    useEffect(() => {
+        if (authentication) return router.push('/admin/dashboard')
+    }, [])
+
 
     return (
         <div className={styles.main}>

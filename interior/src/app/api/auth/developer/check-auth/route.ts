@@ -26,7 +26,7 @@ export async function GET() {
   console.log('token', token)
 
   if (!token) {
-    return NextResponse.json({ isLoggedIn: false, message: 'token이 존재하지 않습니다' }, { status: 401 })
+    return NextResponse.json({ isLoggedIn: false, message: 'token not exist'})
   }
   try {
     const decryptedToken = await decrypt(token.value);

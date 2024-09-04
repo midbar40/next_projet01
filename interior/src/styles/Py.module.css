@@ -2,14 +2,13 @@
 .py {
     display: flex;
     flex-direction: column;
-    width: 85%;
   }
   .py div{
     display: flex;
     align-items: center;
     gap: 25px;
-    width: 100%;
     cursor: pointer;
+    
   }
   .py_selectBox{
     width: 150px; 
@@ -25,5 +24,7 @@
     height: 20px;
   }
   .py_content{
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
   }

@@ -20,7 +20,9 @@ interface AdmitDashboardProps {
     developAuth: boolean;
     setDevelopAuth: Dispatch<SetStateAction<boolean>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
-    getAdminReqInfo: () => Promise<void>
+    getAdminReqInfo: () => Promise<void>;
+    status: string;
+    setStatus : Dispatch<SetStateAction<string>>;
 }
 
 
@@ -34,7 +36,6 @@ const sendEmailToAdmin = async (email: string, id: string, status: string) => {
             body: JSON.stringify({ email, id, status: 'approved' })
         })
         const result = await response.json()
-        console.log('nodemailer result', result)
         if (result.success) console.log('메일전송성공')
         else console.log('메일전송실패')
     } catch (error) {
@@ -48,9 +49,10 @@ export default function AdmitDashboard({
     developAuth,
     setDevelopAuth,
     setLoading,
-    getAdminReqInfo
+    getAdminReqInfo,
+    status,
+    setStatus
 }: AdmitDashboardProps) {
-    const [status, setStatus] = useState('')
     const handleApproval = async (id: string, email: string) => {
         console.log('adminInfo', adminInfo)
         // 서버에서 status pending을 approved로 변경, PUT method
@@ -110,12 +112,6 @@ export default function AdmitDashboard({
             console.error('Logout failed', error);
         }
     }
-
-    useEffect(() => {
-        // 서버에서 관리자 요청자 정보 가져오기
-        getAdminReqInfo()
-    }, [status])
-
     return (
         <div className={styles.main}>
             <div className={styles.logout}><span onClick={handleLogout}>로그아웃</span></div>

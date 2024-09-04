@@ -17,7 +17,6 @@ export default function AdminSignup() {
             body: JSON.stringify({ state })
         })
         const result = await response.json()
-        console.log('admin등록요청 result ', result)
         if (result.success) return alert('관리자 등록 요청이 완료되었습니다, 1~2일 정도 신원확인이 소요되며, 이메일로 결과를 받아보신 후에 로그인이 가능합니다')
         if (result.message === '중복가입오류') return alert('이미 가입된 회원입니다')
         else return alert('관리자 등록 요청에 실패했습니다, 관계자에게 문의하세요')
@@ -32,7 +31,6 @@ export default function AdminSignup() {
     const submitAdminSignup = async (e: React.FormEvent) => {
         e.preventDefault()
         // 서버로 등록 요청
-        console.log('등록 요청', state)
         if (verifyFormValue(state)) {
             await submitAdminInfo()
             resetForm()

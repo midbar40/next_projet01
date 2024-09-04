@@ -46,7 +46,7 @@ export const UserInfoProvider = ({ children }: UserInfoProviderProps) => {
                     throw new Error('Network response was not ok');
                 }
                 const serverData = await response.json();
-                setUserInfo(serverData.result); // 서버 데이터에서 사용자 정보 추출
+                setUserInfo(serverData.result.rows); // 서버 데이터에서 사용자 정보 추출
                 setDataLoaded(true); // 데이터 로드 완료
             } catch (error) {
                 console.error('Error fetching user data:', error);

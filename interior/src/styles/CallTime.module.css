@@ -1,6 +1,7 @@
 .time{
     display: flex;
     flex-direction: column;
+    width: 85%;
   }
   .time div{
     display: flex;

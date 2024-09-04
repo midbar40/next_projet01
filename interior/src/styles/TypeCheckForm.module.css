@@ -1,7 +1,6 @@
 .type {
     display: flex;
     flex-direction: column;
-    width: 89%;
   }
   .type div{
     display: flex;

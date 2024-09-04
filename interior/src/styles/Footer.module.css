@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 10rem;
+  padding-left: 6rem;
   gap: .5rem;
 }
 
@@ -28,4 +28,14 @@
   color: #c7c7c7;
   font-size: 1.2rem;
   margin-top: 5px;
+}
+
+
+@media (max-width : 700px) {
+  .footerTag span {
+    font-size: 1rem;
+  }
+  .footerTag p {
+    font-size: 1rem;
+  }
 }
