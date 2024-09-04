@@ -20,7 +20,7 @@ interface AdmitDashboardProps {
     developAuth: boolean;
     setDevelopAuth: Dispatch<SetStateAction<boolean>>;
     setLoading: Dispatch<SetStateAction<boolean>>;
-    getAdminReqInfo : () => Promise<void>
+    getAdminReqInfo: () => Promise<void>
 }
 
 
@@ -138,7 +138,7 @@ export default function AdmitDashboard({
                         </tr>
                     </thead>
                     <tbody>
-                        {adminInfo.map((item: Admin, index: number) => (
+                        {Array.isArray(adminInfo) ? adminInfo.map((item: Admin, index: number) => (
                             <tr key={item.contact}>
                                 <td>{index + 1}</td>
                                 <td>{item.id}</td>
@@ -150,7 +150,7 @@ export default function AdmitDashboard({
                                 <td onClick={() => handleApproval(item.id, item.email)} style={{ color: 'blue', cursor: "pointer" }}>승인</td>
                                 <td onClick={() => handleDenial(item.id, item.email)} style={{ color: 'red', cursor: "pointer" }}>거절</td>
                             </tr>
-                        ))}
+                        )) : []}
                     </tbody>
                 </table>
             </div>

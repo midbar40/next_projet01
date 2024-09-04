@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "집돌이즘",
   description: "대전인테리어 전문 집돌이즘",
+  icons : {
+     icon : '../../public/images/brandLogo.png'
+  }
 };
 
 export default function RootLayout({
