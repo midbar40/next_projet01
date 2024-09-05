@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { connectMysql } from '@/app/api/db/connectDb'
+import { sql } from '@vercel/postgres';
 import bcrypt from 'bcrypt'
 import { RowDataPacket } from 'mysql2';
 import { encrypt } from '../../jwtToken'
@@ -16,14 +16,11 @@ export async function POST(req: Request) {
     const body = await req.json()
     const id = body.id
     const password = body.password
-    let connection;
     try {
         // DB 내 아이디, 비밀번호 비교, status 상태확인
-        connection = await connectMysql();
-        if (connection) {
-            const [result] = await connection.query<Admin[]>(`SELECT id, pw, status FROM admin WHERE id = ?`, [id])
-            if (result.length > 0) {
-                const admin = result[0]; // 첫 번째 행 접근
+            const result = await sql.query(`SELECT id, pw, status FROM admin WHERE id = $1`, [id])
+            if (result.rows.length > 0 ) {
+                const admin = result.rows[0]; 
                 const isMatch = await bcrypt.compare(password, admin.pw);
                 if (isMatch && admin.status === 'approved') {
                     // 쿠키설정
@@ -35,10 +32,7 @@ export async function POST(req: Request) {
                 } else {
                     return NextResponse.json({ success: false, message: 'incorrect_NotApproved' })
                 }
-            } else {
-                return NextResponse.json({ success: false, message: 'empty' })
-            }
-        }
+            } 
     }
     catch (error) {
         console.log('admin login error', error)
