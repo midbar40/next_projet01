@@ -4,6 +4,7 @@ import React, { ReactNode, useState, useEffect, Dispatch, SetStateAction, ReactE
 import Link from 'next/link';
 import { AuthProvider, useAuth } from '@/app/admin/AuthContext'
 import { UserInfoProvider } from '@/app/admin/UserInfoContext'
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 interface AdminLayoutProps {
     children: ReactNode; // children의 타입을 명시
@@ -45,26 +46,28 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     useEffect(() => { setLoading(false) }, []);
 
     return (
-        <AuthProvider >
-            {loading ? (
-                <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
-                    fontSize: '2rem'
-                }}>Loading...</div>
-            ) : (
-                <UserInfoProvider>
-                        <Navigation/>
+        <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+            <AuthProvider >
+                {loading ? (
+                    <div style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh',
+                        fontSize: '2rem'
+                    }}>Loading...</div>
+                ) : (
+                    <UserInfoProvider>
+                        <Navigation />
                         {children}
-                </UserInfoProvider>
-            )}
-        </AuthProvider>
+                    </UserInfoProvider>
+                )}
+            </AuthProvider>
+        </ReCaptchaProvider>
     );
 }
 

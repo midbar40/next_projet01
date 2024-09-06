@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '@/app/admin/login/page.module.css'
 import { useAuth } from '@/app/admin/AuthContext';  // 경로는 실제 파일 위치에 맞게 수정
 import { useRouter } from 'next/navigation'
+import { useReCaptcha } from "next-recaptcha-v3";
 
 export default function AdminLogin() {
     const [errorMessage, setErrorMessage] = useState('')
@@ -11,6 +12,7 @@ export default function AdminLogin() {
     const router = useRouter()
     const [id, setId] = useState('')
     const [password, setPassword] = useState('')
+    const { executeRecaptcha } = useReCaptcha();
 
     // 폼검증 함수
     const verifyFormValue = (id: string, pw: string) => {
@@ -24,6 +26,7 @@ export default function AdminLogin() {
         }
     }
     const submitToServer = async () => {
+        const token = await executeRecaptcha("admin-login");
         // 서버로 로그인 요청
         const response = await fetch('/api/auth/admin/login', {
             method: 'POST',
@@ -31,7 +34,7 @@ export default function AdminLogin() {
                 'Content-Type': 'application/json'
             },
             credentials: 'include',
-            body: JSON.stringify({ id, password })
+            body: JSON.stringify({ id, password, token })
         })
         const result = await response.json()
         if (result.success) {
@@ -48,6 +51,7 @@ export default function AdminLogin() {
 
     const submitAdminInfo = async (e: React.FormEvent) => {
         e.preventDefault()
+        
         if (verifyFormValue(id, password)) {
             await submitToServer()
             setId('')

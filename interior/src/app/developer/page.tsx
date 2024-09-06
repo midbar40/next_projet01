@@ -4,6 +4,7 @@ import { convertUtcTimeToKoreanTime } from '@/app/common/function/convertUtcKore
 import styles from '@/app/developer/page.module.css'
 import DevelopLogin from '@/app/developer/DevelopLogin'
 import AdmitDashboard from '@/app/developer/AdmintDashboard'
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 // User 정보 타입 정의
 interface Admin {
@@ -64,7 +65,7 @@ export default function DevelopHome() {
     }, [status])
 
     return (
-        <>
+        <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
             {loading ? (
                 <div style={{
                     position: 'absolute',
@@ -97,6 +98,6 @@ export default function DevelopHome() {
                     )
                 )
             }
-        </>
+        </ReCaptchaProvider>
     );
 }    

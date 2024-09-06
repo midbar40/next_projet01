@@ -16,11 +16,22 @@ export async function POST(req: Request) {
     const body = await req.json()
     const id = body.id
     const password = body.password
+    const token = body.token
     try {
-        // DB 내 아이디, 비밀번호 비교, status 상태확인
+        const response = await fetch('https://www.google.com/recaptcha/api/siteverify',
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`
+            }
+        )
+        const data = await response.json();
+        if (data.success) {
+            // DB 내 아이디, 비밀번호 비교, status 상태확인
             const result = await sql.query(`SELECT id, pw, status FROM admin WHERE id = $1`, [id])
-            if (result.rows.length > 0 ) {
-                const admin = result.rows[0]; 
+            if (result.rows.length > 0) {
+                const admin = result.rows[0];
                 const isMatch = await bcrypt.compare(password, admin.pw);
                 if (isMatch && admin.status === 'approved') {
                     // 쿠키설정
@@ -32,7 +43,11 @@ export async function POST(req: Request) {
                 } else {
                     return NextResponse.json({ success: false, message: 'incorrect_NotApproved' })
                 }
-            } 
+            }
+        } else {
+            console.log('RECAPCHA false')
+            return NextResponse.json({ success: false })
+        }
     }
     catch (error) {
         console.log('admin login error', error)

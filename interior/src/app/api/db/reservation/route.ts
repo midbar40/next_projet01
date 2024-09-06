@@ -6,20 +6,39 @@ import { createTable } from './vercelPostgreCreateTable';
 createTable().catch(err => console.error('Error creating table:', err));
 
 export async function POST(req: Request) {
-    const { state } = await req.json()
+    const { state, token } = await req.json()
     console.log('state', state)
-    try {
-        // 쿼리 실행
-        const result = await sql`
+    console.log('token', token)
+    if (!token) { return NextResponse.json({ success: false, message: 'RECAPCHA Token is not exist' }) }
+    else {
+        try {
+            const response = await fetch('https://www.google.com/recaptcha/api/siteverify',
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`
+                }
+            )
+            const data = await response.json();
+            console.log('recapcha data', data)
+            if (data.success) {
+                // 쿼리 실행
+                const result = await sql`
          INSERT INTO reservation (contact, address, type, py, schedule, callTime, qna)
             VALUES (${state.contact}, ${state.juso + ' ' + state.detailJuso}, ${state.homeType}, ${state.py}, ${state.schedule}, ${state.callTime}, ${state.qna})
             `
-        console.log('Table insert successfully');
-        return NextResponse.json({ success: true, result });
-    }
-    catch (error) {
-        console.error('DB 저장 error', error)
-        return NextResponse.json({ success: false, error })
+                console.log('Table insert successfully');
+                return NextResponse.json({ success: true, result });
+            } else {
+                console.log('RECAPCHA false')
+                return NextResponse.json({ success: false })
+            }
+        }
+        catch (error) {
+            console.error('DB 저장 error', error)
+            return NextResponse.json({ success: false, message: 'RECAPCHA is not success' })
+        }
     }
 }
 

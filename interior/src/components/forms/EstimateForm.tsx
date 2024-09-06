@@ -3,11 +3,13 @@ import { TypeCheckForm, Py, Region, Schedule, Contact, CallTime, Qna, Agree, Req
 import styles from '@/styles/EstimateForm.module.css'
 import { useState } from "react";
 import { State, useFormDispatch, useForms } from '@/components/forms/FormContext'
+import { useReCaptcha } from "next-recaptcha-v3";
 
 const EstimateForm = () => {
     const state = useForms()
     const dispatch = useFormDispatch()
     const [errorMessage, setErrorMessage] = useState('')
+    const { executeRecaptcha } = useReCaptcha();
 
 
     // 폼 전체를 초기화하는 함수
@@ -17,13 +19,14 @@ const EstimateForm = () => {
 
     // DB에 Form전송
     const sendEstimateForm = async (state: {}) => {
+        const token = await executeRecaptcha("reservation");
         try {
             const response = await fetch('/api/db/reservation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': "application/json"
                 },
-                body: JSON.stringify({ state })
+                body: JSON.stringify({ state, token })
             })
             const result = await response.json()
         } catch (error) {
