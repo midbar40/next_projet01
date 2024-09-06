@@ -1,6 +1,6 @@
 /* container 스타일 */
 .container {
-  max-width: 90%;
+  max-width: 85%;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* 3열 그리드 */
