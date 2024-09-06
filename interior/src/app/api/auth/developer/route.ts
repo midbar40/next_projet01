@@ -19,7 +19,7 @@ export async function POST(req: Request) {
             }
         )
         const data = await response.json();
-        if (data.success) {
+        if (data.success && data.score >= 0.7) {
             const developerPw = process.env.DEVELOP_PW as string
             if (developerPw === password) {
                 const token = await encrypt(userId, 'developer')

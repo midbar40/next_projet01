@@ -7,7 +7,7 @@ export async function createTable() {
       CREATE TABLE IF NOT EXISTS reservation (
             id SERIAL PRIMARY KEY,
             contact VARCHAR(15) NOT NULL,  
-            address VARCHAR(30) NOT NULL,    
+            address VARCHAR(100) NOT NULL,    
             type VARCHAR(15) NOT NULL,     
             py VARCHAR(15) NOT NULL,       
             schedule VARCHAR(15) NOT NULL, 

@@ -23,7 +23,7 @@ export async function POST(req: Request) {
             )
             const data = await response.json();
             console.log('recapcha data', data)
-            if (data.success) {
+            if (data.success && data.score >= 0.7) {
                 // 쿼리 실행
                 const result = await sql`
          INSERT INTO reservation (contact, address, type, py, schedule, callTime, qna)
