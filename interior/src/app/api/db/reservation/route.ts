@@ -14,6 +14,7 @@ export async function POST(req: Request) {
         try {
             const response = await fetch('https://www.google.com/recaptcha/api/siteverify',
                 {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
