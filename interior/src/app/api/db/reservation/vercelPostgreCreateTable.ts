@@ -10,7 +10,7 @@ export async function createTable() {
             address VARCHAR(100) NOT NULL,    
             type VARCHAR(15) NOT NULL,     
             py VARCHAR(15) NOT NULL,       
-            schedule VARCHAR(15) NOT NULL, 
+            schedule VARCHAR(30) NOT NULL, 
             callTime VARCHAR(15) NOT NULL, 
             qna TEXT NOT NULL,            
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
