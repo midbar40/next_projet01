@@ -29,6 +29,7 @@ export async function POST(req: Request) {
         )
         const data = await response.json();
         if (data.success && data.score >= 0.7) {
+            console.log('여기 들어오나?')
             // DB 내 아이디, 비밀번호 비교, status 상태확인
             const result = await sql.query(`SELECT id, pw, status FROM admin WHERE id = $1`, [id])
             if (result.rows.length > 0) {

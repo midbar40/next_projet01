@@ -26,7 +26,7 @@ export default function AdminLogin() {
         }
     }
     const submitToServer = async () => {
-        const token = await executeRecaptcha("admin-login");
+        const token = await executeRecaptcha("adminLogin");
         // 서버로 로그인 요청
         const response = await fetch('/api/auth/admin/login', {
             method: 'POST',
