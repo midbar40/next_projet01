@@ -95,6 +95,9 @@
         font-size: 1rem;
     }
     .tagBox {
-        font-size: 1rem;
+        font-size: .8rem;
+    }
+    .tagBox span{
+        padding: .5rem .4rem;
     }
 }
