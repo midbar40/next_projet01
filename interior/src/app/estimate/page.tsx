@@ -6,7 +6,7 @@ export default function page() {
         <>
             <Header />
             <div style={{
-                marginTop: '10rem',
+                marginTop: '5rem',
                 backgroundColor: 'rgb(255, 255, 255)',
                 display: 'flex',
                 justifyContent: 'center',

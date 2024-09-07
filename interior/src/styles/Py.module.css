@@ -11,7 +11,7 @@
     
   }
   .py_selectBox{
-    width: 130px; 
+    width: 148px; 
     height: 60px; 
     border: .5px solid #333;
     border-radius: 1rem;
@@ -28,3 +28,10 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  
+@media (max-width: 420px) {
+  .py_selectBox{
+    width: 100%;
+  }
+}

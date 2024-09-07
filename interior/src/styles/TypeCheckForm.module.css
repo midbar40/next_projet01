@@ -10,7 +10,7 @@
     cursor: pointer;
   }
   .type .type_selectBox{
-    width: 130px; 
+    width: 148px; 
     height: 60px; 
     border: .5px solid #333;
     border-radius: 1rem;
@@ -25,4 +25,10 @@
   .type_content{
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 420px) {
+    .type .type_selectBox{
+      width: 100%;
+    }
   }

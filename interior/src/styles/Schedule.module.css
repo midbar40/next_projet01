@@ -1,7 +1,7 @@
 .schedule{
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 100%;
   }
   .schedule label{
     padding-bottom: 15px;

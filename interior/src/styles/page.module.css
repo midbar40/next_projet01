@@ -20,7 +20,7 @@
 .strongPoint{
   width: 100%;
   padding: 5rem 0;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   background-color: #efefef;
   display: flex;
   justify-content: center;
@@ -28,15 +28,16 @@
 }
 .gridCard {
   width: 100%;
-  display: flex; /* Optional: To center the grid within its container */
+  display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the grid horizontally */
+  justify-content: center; 
   align-items: center;
   /* margin-top: 4rem ; */
   margin-bottom: 6rem;
 }
 
 .estimate {
+  width: 100%;
   background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;

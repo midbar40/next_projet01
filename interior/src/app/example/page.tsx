@@ -11,7 +11,7 @@ export default function example() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    marginTop: '15rem',
+                    marginTop: '10rem',
                     marginBottom: '6rem'
                 }}>
                 <Header />

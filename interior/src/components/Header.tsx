@@ -6,17 +6,18 @@ import Image from 'next/image'
 
 const Header: React.FC = () => {
 
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window?.innerWidth <= 768);
     };
-
+    handleResize(); // 초기값 설정
     window?.addEventListener('resize', handleResize);
     return () => window?.removeEventListener('resize', handleResize);
   }, []);
+
   const handleMenuToggle = () => {
     setMenuOpen(prevOpen => !prevOpen)
   }
@@ -39,8 +40,8 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <ul>
-          <Link href='/'>
-            <li className={styles.brandName}>
+          <li className={styles.brandName}>
+            <Link href='/'>
               <div className={styles.brandName_div}>
                 <Image
                   src="/images/brandLogo.png"
@@ -51,8 +52,8 @@ const Header: React.FC = () => {
                 />
                 <h1>집돌이즘</h1>
               </div>
-            </li>
-          </Link>
+            </Link>
+          </li>
         </ul>
         {isMobile ? (
           <div className={styles.hamburger_menu} onClick={handleMenuToggle}>☰</div>
@@ -60,12 +61,15 @@ const Header: React.FC = () => {
           <ul className={styles.link}>
             <Link href='/example'><li>시공사례</li></Link>
             <Link href='/estimate'><li>견적문의</li></Link>
-          </ul>)}
+          </ul>
+        )}
       </nav>
       {isMobile && menuOpen &&
         (<div className={styles.mobileList}>
-          <Link href='/example'><li>시공사례</li></Link>
-          <Link href='/estimate'><li>견적문의</li></Link>
+          <ul>
+            <li><Link href='/example'>시공사례</Link></li>
+            <li><Link href='/estimate'>견적문의</Link></li>
+          </ul>
         </div>)
       }
     </header>

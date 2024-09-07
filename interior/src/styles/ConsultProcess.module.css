@@ -17,7 +17,7 @@
 }
 
 .process_cards {
-    width: 70%;
+    width: 100%;
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
@@ -46,3 +46,17 @@
     font-size: 1.5rem;
     /* font-weight: 600; */
 }
+
+@media (max-width: 420px) {
+    .processHeadLine h2{
+        font-size: 1.4rem;
+    }
+    .cardId span{
+        font-size: 1rem;
+    }
+    
+    .card {
+        font-size: 1rem;
+    }
+    
+  }

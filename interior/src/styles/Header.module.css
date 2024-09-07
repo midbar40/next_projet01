@@ -38,6 +38,7 @@
   .brandName {
     position: absolute;
     left: 5%;
+    top: 35%;
     color: rgb(0, 0, 0) !important;
     font-size: 1.5rem !important;
   }
@@ -86,11 +87,22 @@
     cursor: pointer;
     font-family: 'GmarketSansMedium';
   }
-  .mobileList a{
+  .mobileList ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .mobileList ul li{
     display: flex;
     width: 100%;
-    justify-content: flex-end;
-    padding-right: 5rem;
+
+  }
+  .mobileList ul li a{
+    border-bottom: 1px solid #fff;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   .mobileList a:hover{
     background-color: #fdff98;
@@ -101,6 +113,12 @@
     .brandName{
       position: absolute;
       top: 35%;
+    }
+  }
+
+  @media (max-width : 420px) {
+    .mobileList ul li a{
+      font-size: 1.3rem;
     }
   }
 

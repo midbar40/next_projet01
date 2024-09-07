@@ -2,7 +2,7 @@
 .contact{
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 100%;
   }
   .contact label{
     padding-bottom: 15px;

@@ -40,10 +40,6 @@
     font-family: 'GmarketSansMedium';
 }
 
-/* .paraImg img {
-    width: 50%;
-} */
-
 .paraText {
     width: 100%;
     display: flex;
@@ -75,7 +71,30 @@
     border-radius: 1rem;
     cursor: pointer;
 }
+
 .tagBox span:hover {
-   background-color: #333;
-   color: #fff;
+    background-color: #333;
+    color: #fff;
+}
+
+@media (max-width:420px) {
+    .postDiv {
+        margin-top: 10rem;
+        margin-bottom: 6rem;
+    }
+    .postDiv h1 {
+        font-size: 1.4rem;
+    }
+    .paraImg h2 {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+  
+    .paraText p {
+        max-width: 80%;
+        font-size: 1rem;
+    }
+    .tagBox {
+        font-size: 1rem;
+    }
 }
