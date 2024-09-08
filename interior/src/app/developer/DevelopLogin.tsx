@@ -9,7 +9,7 @@ interface DevelopLoginProps {
 
 // 서버에 암호확인
 const checkPassword = async (password: string, token: string) => {
-   
+
     try {
         const response = await fetch('/api/auth/developer', {
             method: 'POST',
@@ -31,7 +31,7 @@ export default function DevelopLogin({ setDevelopAuth }: DevelopLoginProps) {
     const { executeRecaptcha } = useReCaptcha();
 
 
-    const handleDelvopAuth = async (e: React.FormEvent) => {
+    const handleDevelopAuth = async (e: React.FormEvent) => {
         e.preventDefault()
         const token = await executeRecaptcha("developer");
         const passwordMatched = await checkPassword(password, token)
@@ -49,7 +49,7 @@ export default function DevelopLogin({ setDevelopAuth }: DevelopLoginProps) {
                 <h1>집돌이즘 개발자 로그인</h1>
             </div>
             <div className={styles.loginForm}>
-                <form onSubmit={handleDelvopAuth}>
+                <form onSubmit={handleDevelopAuth}>
                     <div className={styles.inputDiv}>
                         <div className={styles.pwDiv}>
                             <label htmlFor='pw'>비밀번호</label>
