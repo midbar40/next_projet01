@@ -35,37 +35,38 @@
 
 
 ----------
-### pacakage.json
-
- "dependencies": {
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
-    "@headlessui/react": "^2.1.2",
-    "@heroicons/react": "^2.1.5",
-    "@vercel/analytics": "^1.3.1",
-    "@vercel/postgres": "^0.9.0",
-    "@vercel/speed-insights": "^1.0.12",
-    "autoprefixer": "^10.4.20",
-    "bcrypt": "^5.1.1",
-    "jose": "^5.8.0",
-    "mysql2": "^3.11.0",
-    "next": "14.2.5",
-    "next-recaptcha-v3": "^1.4.1",
-    "nodemailer": "^6.9.14",
-    "postcss": "^8.4.41",
-    "react": "^18",
-    "react-dom": "^18",
-    "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.7",
-    "twilio": "^5.2.3"
+### pacakage.json   
+   
+ "dependencies": {   
+    "@emotion/react": "^11.13.0",   
+    "@emotion/styled": "^11.13.0",   
+    "@headlessui/react": "^2.1.2",   
+    "@heroicons/react": "^2.1.5",   
+    "@vercel/analytics": "^1.3.1",   
+    "@vercel/postgres": "^0.9.0",   
+    "@vercel/speed-insights": "^1.0.12",   
+    "autoprefixer": "^10.4.20",   
+    "bcrypt": "^5.1.1",   
+    "jose": "^5.8.0",   
+    "mysql2": "^3.11.0",   
+    "next": "14.2.5",   
+    "next-recaptcha-v3": "^1.4.1",   
+    "nodemailer": "^6.9.14",   
+    "postcss": "^8.4.41",   
+    "react": "^18",   
+    "react-dom": "^18",   
+    "sharp": "^0.33.5",   
+    "tailwindcss": "^3.4.7",   
+    "twilio": "^5.2.3"   
   }
 
 ### 도메인
-**[사이트 도메인]** : (zipdorism.store)
+[사이트 도메인](zipdorism.store)
 
 **관리자** 
-- [로그인] : (zipdorism.store/admin/login)
-- [등록] : (zipdorism.store/adimin/signup)
-- [대쉬보드] : (zipdorism.store/admin/dashboard)
+- [로그인](zipdorism.store/admin/login)
+- [등록](zipdorism.store/adimin/signup)
+- [대쉬보드](zipdorism.store/admin/dashboard)
 
-**[개발자]** : (zipdorism.store/developer)
+**개발자**
+[등록승인](zipdorism.store/developer)
