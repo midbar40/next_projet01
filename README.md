@@ -1,6 +1,6 @@
 # 집돌이즘
 
-<img width="1271" alt="zipdorism" src="https://github.com/user-attachments/assets/5f7c3b03-44c4-42fd-a2f1-53ab8eb384dc">
+![집돌이즘](https://github.com/user-attachments/assets/5f7c3b03-44c4-42fd-a2f1-53ab8eb384dc)
 
 ### 프로젝트명과 기획동기
 ------------
