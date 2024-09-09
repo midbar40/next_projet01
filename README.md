@@ -41,26 +41,26 @@
 ### pacakage.json   
    
  "dependencies": {   
- &nbsp;&nbsp;  "@emotion/react": "^11.13.0",   
-       "@emotion/styled": "^11.13.0",   
-       "@headlessui/react": "^2.1.2",   
-       "@heroicons/react": "^2.1.5",   
-       "@vercel/analytics": "^1.3.1",   
-       "@vercel/postgres": "^0.9.0",   
-       "@vercel/speed-insights": "^1.0.12",   
-       "autoprefixer": "^10.4.20",   
-       "bcrypt": "^5.1.1",   
-       "jose": "^5.8.0",   
-       "mysql2": "^3.11.0",   
-       "next": "14.2.5",   
-       "next-recaptcha-v3": "^1.4.1",   
-       "nodemailer": "^6.9.14",   
-       "postcss": "^8.4.41",   
-       "react": "^18",   
-       "react-dom": "^18",   
-       "sharp": "^0.33.5",   
-       "tailwindcss": "^3.4.7",   
-       "twilio": "^5.2.3"   
+ &nbsp;&nbsp;&nbsp;&nbsp;  "@emotion/react": "^11.13.0",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "@emotion/styled": "^11.13.0",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "@headlessui/react": "^2.1.2",   
+ &nbsp;&nbsp;&nbsp;&nbsp;       "@heroicons/react": "^2.1.5",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "@vercel/analytics": "^1.3.1",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "@vercel/postgres": "^0.9.0",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "@vercel/speed-insights": "^1.0.12",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "autoprefixer": "^10.4.20",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "bcrypt": "^5.1.1",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "jose": "^5.8.0",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "mysql2": "^3.11.0",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "next": "14.2.5",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "next-recaptcha-v3": "^1.4.1",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "nodemailer": "^6.9.14",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "postcss": "^8.4.41",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "react": "^18",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "react-dom": "^18",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "sharp": "^0.33.5",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "tailwindcss": "^3.4.7",   
+ &nbsp;&nbsp;&nbsp;&nbsp;      "twilio": "^5.2.3"   
   }
 
 ----------
