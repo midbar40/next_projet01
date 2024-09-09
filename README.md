@@ -61,11 +61,11 @@
   }
 
 ### 도메인
-**사이트 도메인** : zipdorism.store
+**[사이트 도메인]** : (zipdorism.store)
 
 **관리자** 
-- 로그인 : zipdorism.store/admin/login
-- 등록 : zipdorism.store/adimin/signup
-- 대쉬보드 : zipdorism.store/admin/dashboard
+- [로그인] : (zipdorism.store/admin/login)
+- [등록] : (zipdorism.store/adimin/signup)
+- [대쉬보드] : (zipdorism.store/admin/dashboard)
 
-**개발자** : zipdorism.store/developer
+**[개발자]** : (zipdorism.store/developer)
