@@ -47,9 +47,9 @@ const EstimateForm = () => {
             return false;
         }
         else if (
-            formValue.homeType === '' ||
-            formValue.py === '' ||
-            formValue.callTime === ''
+            formValue.homeType.trim() === '' ||
+            formValue.py.trim() === '' ||
+            formValue.callTime.trim() === ''
         ) {
             setErrorMessage('건물유형, 평형, 연락시간을 모두 선택주세요')
             return false;
@@ -100,17 +100,17 @@ const EstimateForm = () => {
     }
 
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         // 유저에게 메세지 전송
         const textContent = `
         [집돌이즘] 상담이 접수 되었습니다.
         `
         if (verifyFormValue(state)) {
-            sendEstimateForm(state)
+            await sendEstimateForm(state)
             alert('상담이 접수되었습니다')
             resetForm()
-            sendSmsToUser(textContent, state.contact)
+            await sendSmsToUser(textContent, state.contact)
         }
         // 관리자에게 nodemailer로 이메일전송
             sendEmailToAdmin(state)
