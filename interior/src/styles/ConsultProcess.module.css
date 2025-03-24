@@ -1,0 +1,62 @@
+.process_frame {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+.processHeadLine{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    align-items: center;
+}
+
+.processHeadLine h2{
+    font-family: 'Freesentation-9Black';
+    font-size: 3rem;
+}
+
+.process_cards {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 30px;
+    font-family: 'GmarketSansMedium';
+}
+
+.cardId {
+    width: 16.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cardId span{
+    font-size: 1.5rem;
+    /* font-weight: 600; */
+}
+
+.card {
+    border-top: 1px solid #333;
+    padding: .5rem 1rem;
+    color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+    /* font-weight: 600; */
+}
+
+@media (max-width: 420px) {
+    .processHeadLine h2{
+        font-size: 1.4rem;
+    }
+    .cardId span{
+        font-size: 1rem;
+    }
+    
+    .card {
+        font-size: 1rem;
+    }
+    
+  }

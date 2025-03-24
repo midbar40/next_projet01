@@ -1,0 +1,103 @@
+.postDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-Items: center;
+    margin-top: 15rem;
+    margin-bottom: 6rem;
+}
+
+.postTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-Items: center;
+}
+
+.postDiv h1 {
+    font-size: 3rem;
+    font-family: 'Freesentation-9Black';
+    letter-spacing: .3rem;
+    border-bottom: 3px solid #333;
+    padding-bottom: 1rem;
+    margin-bottom: 5rem;
+}
+
+.paraImg {
+    max-width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-Items: center;
+}
+
+.paraImg h2 {
+    max-width: 50%;
+    padding-bottom: 3rem;
+    font-size: 1.5rem;
+    font-family: 'GmarketSansMedium';
+}
+
+.paraText {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-Items: center;
+}
+
+.paraText p {
+    max-width: 50%;
+    padding: 3rem 0;
+    font-size: 2rem;
+    font-family: 'GmarketSansMedium';
+}
+
+.tagBox {
+    width: 100%;
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+    font-size: 1.3rem;
+}
+
+.tagBox span {
+    border: 1px solid #333;
+    padding: .5rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.tagBox span:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+@media (max-width:420px) {
+    .postDiv {
+        margin-top: 10rem;
+        margin-bottom: 6rem;
+    }
+    .postDiv h1 {
+        font-size: 1.4rem;
+    }
+    .paraImg h2 {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+  
+    .paraText p {
+        max-width: 80%;
+        font-size: 1rem;
+    }
+    .tagBox {
+        font-size: .8rem;
+    }
+    .tagBox span{
+        padding: .5rem .4rem;
+    }
+}

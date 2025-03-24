@@ -1,0 +1,15 @@
+.schedule{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .schedule label{
+    padding-bottom: 15px;
+  }
+  .schedule input{
+    width: 100%;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 0 1rem;
+  }

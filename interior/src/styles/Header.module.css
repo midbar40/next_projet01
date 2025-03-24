@@ -1,0 +1,124 @@
+.header {
+    width: 100%;
+    height: 6rem;
+    background-color: rgba(254, 254, 254);
+    box-shadow: 1px 1px 2px 2px #d7d7d7;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+  .nav {
+    padding-right: 8rem;
+  }
+  
+  .nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+  
+  .nav li {
+    width: 80px;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.2rem; /* 최소 1.2rem, 최대 2rem */
+    font-weight: 600;
+    font-family: 'GmarketSansMedium';
+    color: #9f9f9f;
+    text-align: center;
+  }
+  
+  .nav li:hover {
+    color: rgb(0, 0, 0);
+  }
+  
+  .brandName {
+    position: absolute;
+    left: 5%;
+    top: 35%;
+    color: rgb(0, 0, 0) !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .brandName:hover {
+    color: #9f9f9f !important;
+    background-color: #fff !important;
+  }
+  
+  .brandName_div {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brandName_div h1{
+    padding-left: 35px;
+  }
+  .brandName_div img {
+    position: absolute;
+    top: -10%;
+  }
+
+  .hamburger_menu{
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 25%;
+    right: 10%;
+  }
+  .mobileList{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(46, 46, 46, 0.842);
+    position: absolute;
+    z-index: 999;
+    top: 6rem;
+    display: flex;
+    /* padding-top: 5rem; */
+    gap: 2rem;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: 'GmarketSansMedium';
+  }
+  .mobileList ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .mobileList ul li{
+    display: flex;
+    width: 100%;
+
+  }
+  .mobileList ul li a{
+    border-bottom: 1px solid #fff;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .mobileList a:hover{
+    background-color: #fdff98;
+    color: #333;
+  }
+ 
+  @media (max-width : 768px) {
+    .brandName{
+      position: absolute;
+      top: 35%;
+    }
+  }
+
+  @media (max-width : 420px) {
+    .mobileList ul li a{
+      font-size: 1.3rem;
+    }
+  }
+

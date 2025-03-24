@@ -1,0 +1,23 @@
+.agree {
+    display: flex;
+    align-items: center;
+}
+
+.agree input {
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem;
+}
+
+.guide {
+    font-size: 1.1rem;
+    color: #a1a1a1;
+    margin-left: 2.3rem;
+    margin-top: -1.2rem;
+    margin-bottom: 1rem;
+}
+@media (max-width: 420px) {
+    .guide{
+        font-size: .8rem;
+    }
+  }

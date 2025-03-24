@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 3rem 0;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: 'Freesentation-9Black';
+}
+
+.table {
+    max-width: 95%;
+    font-family: 'GmarketSansMedium';
+    margin-bottom: 3rem;
+}
+
+.table table {
+    text-align: center;
+}
+
+.table table thead tr th {
+    padding: .5rem 1rem;
+    border: 1px solid #333;
+    background-color: #e3e3e3;
+}
+
+.table table tbody tr td {
+    padding: 0 1rem;
+    border: 1px solid #333;
+}
+
+.table table tbody tr td:nth-child(8) {
+    width: 24rem;
+}
