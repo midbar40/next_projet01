@@ -2,7 +2,7 @@
 
 ![집돌이즘](https://github.com/user-attachments/assets/5f7c3b03-44c4-42fd-a2f1-53ab8eb384dc)
 
-----------
+
 ### 도메인   
 
 **공식**   
@@ -16,7 +16,6 @@
 **개발자**   
 [등록승인](zipdorism.store/developer)   
 
-------------
 
 ### 프로젝트명과 기획동기
 ------------
