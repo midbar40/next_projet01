@@ -2,6 +2,22 @@
 
 ![집돌이즘](https://github.com/user-attachments/assets/5f7c3b03-44c4-42fd-a2f1-53ab8eb384dc)
 
+----------
+### 도메인   
+
+**공식**   
+[집돌이즘](zipdorism.store)   
+
+**관리자**  
+  - [로그인](zipdorism.store/admin/login)   
+  - [등록](zipdorism.store/adimin/signup)   
+  - [대쉬보드](zipdorism.store/admin/dashboard)   
+
+**개발자**   
+[등록승인](zipdorism.store/developer)   
+
+------------
+
 ### 프로젝트명과 기획동기
 ------------
 집돌이즘은 인테리어 견적문의 사이트 입니다.   
@@ -66,16 +82,4 @@
  &nbsp;&nbsp;&nbsp;&nbsp;      "twilio": "^5.2.3"   
   }
 
-----------
-### 도메인   
 
-**공식**   
-[집돌이즘](zipdorism.store)   
-
-**관리자**  
-  - [로그인](zipdorism.store/admin/login)   
-  - [등록](zipdorism.store/adimin/signup)   
-  - [대쉬보드](zipdorism.store/admin/dashboard)   
-
-**개발자**   
-[등록승인](zipdorism.store/developer)   
