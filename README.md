@@ -6,15 +6,15 @@
 ### 도메인   
 
 **공식**   
-[집돌이즘](zipdorism.store)   
+[집돌이즘](https://zipdorism.store)   
 
 **관리자**  
-  - [로그인](zipdorism.store/admin/login)   
-  - [등록](zipdorism.store/adimin/signup)   
-  - [대쉬보드](zipdorism.store/admin/dashboard)   
+  - [로그인](https://zipdorism.store/admin/login)   
+  - [등록](https://zipdorism.store/adimin/signup)   
+  - [대쉬보드](https://zipdorism.store/admin/dashboard)   
 
 **개발자**   
-[등록승인](zipdorism.store/developer)   
+[등록승인](https://zipdorism.store/developer)   
 
 
 ### 프로젝트명과 기획동기
